@@ -41,6 +41,7 @@ export interface PlayerTotals extends Player {
 }
 
 export interface TeamGameStats {
+  id: number;
   date: string;
   opponent: string;
   home: boolean;

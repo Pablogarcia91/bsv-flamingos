@@ -47,6 +47,7 @@ export function calculatePlayerTotals(players: Player[], matches: Match[]): Play
 export function calculateTeamTotals(matches: Match[]): TeamGameStats[] {
   return matches.map(match => {
     const totals: TeamGameStats = {
+      id: match.id,
       date: match.date,
       opponent: match.opponent,
       home: match.home,

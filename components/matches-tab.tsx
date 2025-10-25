@@ -76,7 +76,7 @@ export function MatchesTab({ matches, onMatchSelect }: MatchesTabProps) {
       <Table className="bg-vice-dark border-2 border-vice-pink rounded-lg overflow-hidden">
         <TableHeader>
           <TableRow className="border-none hover:bg-vice-pink/10">
-            <TableHead>
+            <TableHead className="sticky left-0 z-20 bg-vice-pink">
               <SortButton field="date">Fecha</SortButton>
             </TableHead>
             <TableHead>Rival</TableHead>
@@ -101,8 +101,7 @@ export function MatchesTab({ matches, onMatchSelect }: MatchesTabProps) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {sortedGames.map((game, index) => {
-            const match = matches[index];
+          {sortedGames.map((game) => {
             // Formato correcto: si somos visitantes, nuestro score va segundo
             const displayScore = game.home
               ? `${game.ourScore}-${game.oppScore}`
@@ -110,18 +109,18 @@ export function MatchesTab({ matches, onMatchSelect }: MatchesTabProps) {
 
             return (
               <TableRow
-                key={index}
+                key={game.id}
                 className={cn(
                   "hover:bg-vice-pink/5",
                   game.hasData && onMatchSelect && "cursor-pointer"
                 )}
                 onClick={() => {
                   if (game.hasData && onMatchSelect) {
-                    onMatchSelect(match.id);
+                    onMatchSelect(game.id);
                   }
                 }}
               >
-                <TableCell>{new Date(game.date).toLocaleDateString('es-ES')}</TableCell>
+                <TableCell className="sticky left-0 z-10 bg-vice-dark">{new Date(game.date).toLocaleDateString('es-ES')}</TableCell>
                 <TableCell className="font-bold">{game.opponent}</TableCell>
                 <TableCell>{game.home ? 'LOCAL' : 'VIS'}</TableCell>
                 <TableCell className="font-bold">{displayScore}</TableCell>
@@ -148,7 +147,7 @@ export function MatchesTab({ matches, onMatchSelect }: MatchesTabProps) {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => onMatchSelect(match.id)}
+                      onClick={() => onMatchSelect(game.id)}
                       className="text-xs"
                     >
                       Ver Estadísticas

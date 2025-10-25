@@ -67,7 +67,7 @@ export function MatchDetail({ match, players, onPlayerClick, onBack }: MatchDeta
           <Table className="bg-vice-dark border-2 border-vice-pink rounded-lg overflow-hidden">
             <TableHeader>
               <TableRow className="border-none hover:bg-vice-pink/10">
-                <TableHead>Jugador</TableHead>
+                <TableHead className="sticky left-0 z-20 bg-vice-pink">Jugador</TableHead>
                 <TableHead>Pos</TableHead>
                 <TableHead>MIN</TableHead>
                 <TableHead>PTS</TableHead>
@@ -87,7 +87,7 @@ export function MatchDetail({ match, players, onPlayerClick, onBack }: MatchDeta
 
                   return (
                     <TableRow key={stat.playerId} className="cursor-pointer hover:bg-vice-pink/5">
-                      <TableCell>
+                      <TableCell className="sticky left-0 z-10 bg-vice-dark">
                         <button
                           onClick={() => onPlayerClick(player.id)}
                           className="text-vice-blue font-bold hover:text-vice-pink transition-all hover:translate-x-1 inline-block"
