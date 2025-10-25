@@ -1,17 +1,13 @@
 {
   "name": "bsv-flamingos",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "@types/node": "^24.9.1",
     "@types/react": "^19.2.2",
