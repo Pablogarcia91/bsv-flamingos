@@ -126,5 +126,27 @@ export const matches: Match[] = [
       { playerId: 46, minutes: "19:36", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -1 },
       { playerId: 66, minutes: "10:28", points: 4, t2Made: 0, t3Made: 1, ftMade: 1, ftAttempted: 2, fouls: 5, plusMinus: 10 }
     ]
+  },
+  {
+    id: 6,
+    date: "2024-11-02",
+    opponent: "BBT 1QBT",
+    home: false,
+    ourScore: 70,
+    oppScore: 67,
+    stats: [
+      { playerId: 1, minutes: "18:41", points: 12, t2Made: 3, t3Made: 2, ftMade: 0, ftAttempted: 2, fouls: 3, plusMinus: 0 },
+      { playerId: 4, minutes: "00:00", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 0 },
+      { playerId: 6, minutes: "22:44", points: 5, t2Made: 2, t3Made: 0, ftMade: 1, ftAttempted: 3, fouls: 1, plusMinus: 9 },
+      { playerId: 7, minutes: "26:08", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 2, fouls: 1, plusMinus: 10 },
+      { playerId: 10, minutes: "23:07", points: 6, t2Made: 3, t3Made: 0, ftMade: 0, ftAttempted: 1, fouls: 2, plusMinus: 18 },
+      { playerId: 21, minutes: "12:23", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -9 },
+      { playerId: 24, minutes: "20:43", points: 13, t2Made: 4, t3Made: 0, ftMade: 5, ftAttempted: 10, fouls: 4, plusMinus: -4 },
+      { playerId: 27, minutes: "13:09", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 7 },
+      { playerId: 31, minutes: "12:17", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -11 },
+      { playerId: 44, minutes: "25:09", points: 23, t2Made: 7, t3Made: 1, ftMade: 6, ftAttempted: 10, fouls: 0, plusMinus: 17 },
+      { playerId: 46, minutes: "10:09", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -9 },
+      { playerId: 66, minutes: "15:30", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -13 }
+    ]
   }
 ];
