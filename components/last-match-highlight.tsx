@@ -13,7 +13,7 @@ export function LastMatchHighlight({ match, onViewDetails }: LastMatchHighlightP
 
   return (
     <div className="bg-vice-dark border-2 border-vice-pink rounded-lg p-4 mb-6 animate-neon-fade-in">
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-4">
         <div className="flex items-center gap-3">
           <span className="text-sm text-vice-blue uppercase tracking-wide">Último Partido:</span>
           <div className="flex items-center gap-2 text-white font-bebas text-xl">
@@ -36,7 +36,7 @@ export function LastMatchHighlight({ match, onViewDetails }: LastMatchHighlightP
         </div>
         <button
           onClick={() => onViewDetails(match.id)}
-          className="px-4 py-2 bg-vice-pink text-vice-dark font-bold text-sm rounded hover:bg-vice-blue hover:text-white transition-all transform hover:scale-105 whitespace-nowrap"
+          className="w-full md:w-auto px-4 py-2 bg-vice-pink text-vice-dark font-bold text-sm rounded hover:bg-vice-blue hover:text-white transition-all transform hover:scale-105 whitespace-nowrap"
         >
           Ver Estadísticas
         </button>
