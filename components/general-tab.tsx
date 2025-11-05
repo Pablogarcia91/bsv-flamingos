@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { Player, Match } from "@/lib/types";
 import { calculatePlayerTotals } from "@/lib/stats";
-import { StatCard } from "./stat-card";
 import { PositionBadge } from "./position-badge";
+import { LastMatchHighlight } from "./last-match-highlight";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 import { ArrowUp, ArrowDown } from "lucide-react";
@@ -13,9 +13,10 @@ interface GeneralTabProps {
   players: Player[];
   matches: Match[];
   onPlayerClick: (playerId: number) => void;
+  onMatchSelect: (matchId: number) => void;
 }
 
-export function GeneralTab({ players, matches, onPlayerClick }: GeneralTabProps) {
+export function GeneralTab({ players, matches, onPlayerClick, onMatchSelect }: GeneralTabProps) {
   const [sortField, setSortField] = useState<string>('points');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
 
@@ -73,8 +74,19 @@ export function GeneralTab({ players, matches, onPlayerClick }: GeneralTabProps)
     }
   });
 
+  const lastMatch = matches.length > 0 ? matches[matches.length - 1] : null;
+
   return (
     <div className="animate-neon-fade-in">
+      {/* Last Match Highlight */}
+      {lastMatch && (
+        <LastMatchHighlight
+          match={lastMatch}
+          players={players}
+          onViewDetails={onMatchSelect}
+        />
+      )}
+
       <div className="bg-vice-dark border-2 border-vice-pink rounded-lg p-4 md:p-6 mb-10">
         <div className="grid grid-cols-4 gap-3 md:gap-8">
           <div className="text-center">

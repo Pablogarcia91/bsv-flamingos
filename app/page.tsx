@@ -74,6 +74,7 @@ export default function Home() {
           players={players}
           matches={matches}
           onPlayerClick={handlePlayerClick}
+          onMatchSelect={handleMatchSelect}
         />
       )}
 
