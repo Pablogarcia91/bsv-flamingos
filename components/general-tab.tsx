@@ -82,7 +82,6 @@ export function GeneralTab({ players, matches, onPlayerClick, onMatchSelect }: G
       {lastMatch && (
         <LastMatchHighlight
           match={lastMatch}
-          players={players}
           onViewDetails={onMatchSelect}
         />
       )}
