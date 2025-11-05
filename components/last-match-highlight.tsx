@@ -13,32 +13,30 @@ export function LastMatchHighlight({ match, onViewDetails }: LastMatchHighlightP
 
   return (
     <div className="bg-vice-dark border-2 border-vice-pink rounded-lg p-4 mb-6 animate-neon-fade-in">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-4">
-        <div className="flex items-center gap-3">
-          <span className="text-sm text-vice-blue uppercase tracking-wide">Último Partido:</span>
-          <div className="flex items-center gap-2 text-white font-bebas text-xl">
-            <span>BSV</span>
-            <span className={cn(
-              "font-bold",
-              isWin ? "text-vice-blue" : "text-vice-pink"
-            )}>
-              {match.ourScore}
-            </span>
-            <span className="text-vice-blue">-</span>
-            <span className={cn(
-              "font-bold",
-              !isWin ? "text-vice-blue" : "text-vice-pink"
-            )}>
-              {match.oppScore}
-            </span>
-            <span>{match.opponent}</span>
-          </div>
+      <div className="flex flex-col gap-3">
+        <h3 className="text-sm text-vice-blue uppercase tracking-wide font-bold">Último Partido</h3>
+        <div className="flex items-center gap-2 text-white font-bebas text-xl">
+          <span>BSV</span>
+          <span className={cn(
+            "font-bold",
+            isWin ? "text-vice-blue" : "text-vice-pink"
+          )}>
+            {match.ourScore}
+          </span>
+          <span className="text-vice-blue">-</span>
+          <span className={cn(
+            "font-bold",
+            !isWin ? "text-vice-blue" : "text-vice-pink"
+          )}>
+            {match.oppScore}
+          </span>
+          <span>{match.opponent}</span>
         </div>
         <button
           onClick={() => onViewDetails(match.id)}
-          className="w-full md:w-auto px-4 py-2 bg-vice-pink text-vice-dark font-bold text-sm rounded hover:bg-vice-blue hover:text-white transition-all transform hover:scale-105 whitespace-nowrap"
+          className="text-vice-blue text-sm hover:text-vice-pink transition-colors underline text-left"
         >
-          Ver Estadísticas
+          Ver estadísticas completas →
         </button>
       </div>
     </div>
