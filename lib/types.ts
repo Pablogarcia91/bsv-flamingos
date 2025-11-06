@@ -11,16 +11,16 @@ export interface PlayerStats {
   minutes: string;
   points: number;
   t2Made: number;
-  t2Attempted: number;
+  t2Attempted?: number;
   t3Made: number;
-  t3Attempted: number;
+  t3Attempted?: number;
   ftMade: number;
   ftAttempted: number;
-  rebounds: number;
-  assists: number;
-  steals: number;
-  blocks: number;
-  turnovers: number;
+  rebounds?: number;
+  assists?: number;
+  steals?: number;
+  blocks?: number;
+  turnovers?: number;
   fouls: number;
   plusMinus: number;
 }
