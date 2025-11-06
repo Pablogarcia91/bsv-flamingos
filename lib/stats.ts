@@ -9,9 +9,16 @@ export function calculatePlayerTotals(players: Player[], matches: Match[]): Play
       games: 0,
       totalMinutes: 0,
       t2Made: 0,
+      t2Attempted: 0,
       t3Made: 0,
+      t3Attempted: 0,
       ftMade: 0,
       ftAttempted: 0,
+      rebounds: 0,
+      assists: 0,
+      steals: 0,
+      blocks: 0,
+      turnovers: 0,
       fouls: 0,
       points: 0,
       plusMinus: 0
@@ -30,9 +37,16 @@ export function calculatePlayerTotals(players: Player[], matches: Match[]): Play
             player.totalMinutes += min + (sec / 60);
           }
           player.t2Made += stat.t2Made || 0;
+          player.t2Attempted += stat.t2Attempted || 0;
           player.t3Made += stat.t3Made || 0;
+          player.t3Attempted += stat.t3Attempted || 0;
           player.ftMade += stat.ftMade || 0;
           player.ftAttempted += stat.ftAttempted || 0;
+          player.rebounds += stat.rebounds || 0;
+          player.assists += stat.assists || 0;
+          player.steals += stat.steals || 0;
+          player.blocks += stat.blocks || 0;
+          player.turnovers += stat.turnovers || 0;
           player.fouls += stat.fouls || 0;
           player.points += stat.points || 0;
           player.plusMinus += stat.plusMinus || 0;
