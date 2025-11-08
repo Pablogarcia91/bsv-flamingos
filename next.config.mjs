@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+
 const nextConfig = {
-  output: 'export',
+  output: isGitHubPages ? 'export' : undefined,
   images: {
-    unoptimized: true,
+    unoptimized: isGitHubPages,
   },
-  basePath: '/bsv-flamingos',
+  basePath: isGitHubPages ? '/bsv-flamingos' : '',
 };
 
 export default nextConfig;
