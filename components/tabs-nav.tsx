@@ -1,59 +1,63 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-interface TabsNavProps {
-  activeTab: string;
-  onTabChange: (tab: string) => void;
-}
+export function TabsNav() {
+  const pathname = usePathname();
 
-export function TabsNav({ activeTab, onTabChange }: TabsNavProps) {
   const tabs = [
-    { id: "general", label: "General" },
-    { id: "matches", label: "Partidos" },
-    { id: "roster", label: "Plantilla" }
+    { id: "general", label: "General", href: "/" },
+    { id: "matches", label: "Partidos", href: "/partidos" },
+    { id: "roster", label: "Plantilla", href: "/plantilla" }
   ];
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   return (
     <>
       {/* Desktop tabs */}
       <div className="hidden md:flex gap-4 mb-10 flex-wrap justify-center">
         {tabs.map((tab) => (
-          <Button
-            key={tab.id}
-            variant={activeTab === tab.id ? "default" : "outline"}
-            className={`
-              font-bebas text-lg tracking-wider uppercase px-8 py-3
-              transition-all duration-300
-              ${activeTab === tab.id
-                ? "bg-vice-pink text-white border-vice-pink"
-                : "hover:bg-vice-pink/10"
-              }
-            `}
-            onClick={() => onTabChange(tab.id)}
-          >
-            {tab.label}
-          </Button>
+          <Link key={tab.id} href={tab.href}>
+            <Button
+              variant={isActive(tab.href) ? "default" : "outline"}
+              className={`
+                font-bebas text-lg tracking-wider uppercase px-8 py-3
+                transition-all duration-300
+                ${isActive(tab.href)
+                  ? "bg-vice-pink text-white border-vice-pink"
+                  : "hover:bg-vice-pink/10"
+                }
+              `}
+            >
+              {tab.label}
+            </Button>
+          </Link>
         ))}
       </div>
 
       {/* Mobile segmented tabs */}
       <div className="md:hidden mb-10 bg-vice-dark border-2 border-vice-pink rounded-lg p-1 flex gap-1">
         {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            className={`
-              flex-1 font-bebas text-sm tracking-wider uppercase px-4 py-2 rounded-md
-              transition-all duration-200
-              ${activeTab === tab.id
-                ? "bg-vice-pink text-white"
-                : "text-vice-blue hover:text-white"
-              }
-            `}
-            onClick={() => onTabChange(tab.id)}
-          >
-            {tab.label}
-          </button>
+          <Link key={tab.id} href={tab.href} className="flex-1">
+            <button
+              className={`
+                w-full font-bebas text-sm tracking-wider uppercase px-4 py-2 rounded-md
+                transition-all duration-200
+                ${isActive(tab.href)
+                  ? "bg-vice-pink text-white"
+                  : "text-vice-blue hover:bg-vice-pink/20 hover:text-white"
+                }
+              `}
+            >
+              {tab.label}
+            </button>
+          </Link>
         ))}
       </div>
     </>
