@@ -148,5 +148,27 @@ export const matches: Match[] = [
       { playerId: 46, minutes: "10:09", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -9 },
       { playerId: 66, minutes: "15:30", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -13 }
     ]
+  },
+  {
+    id: 7,
+    date: "2024-11-09",
+    opponent: "Manises Eliseo A",
+    home: false,
+    ourScore: 62,
+    oppScore: 52,
+    stats: [
+      { playerId: 7, minutes: "15:54", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 3 },
+      { playerId: 9, minutes: "12:25", points: 4, t2Made: 2, t3Made: 0, ftMade: 0, ftAttempted: 1, fouls: 1, plusMinus: 0 },
+      { playerId: 10, minutes: "15:15", points: 8, t2Made: 3, t3Made: 0, ftMade: 2, ftAttempted: 4, fouls: 4, plusMinus: -5 },
+      { playerId: 11, minutes: "27:44", points: 13, t2Made: 3, t3Made: 1, ftMade: 4, ftAttempted: 5, fouls: 3, plusMinus: 8 },
+      { playerId: 15, minutes: "14:53", points: 4, t2Made: 0, t3Made: 1, ftMade: 1, ftAttempted: 2, fouls: 3, plusMinus: 7 },
+      { playerId: 19, minutes: "09:32", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: -3 },
+      { playerId: 21, minutes: "10:07", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: -4 },
+      { playerId: 24, minutes: "22:11", points: 14, t2Made: 4, t3Made: 0, ftMade: 6, ftAttempted: 6, fouls: 3, plusMinus: 7 },
+      { playerId: 31, minutes: "09:41", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: 10 },
+      { playerId: 44, minutes: "23:23", points: 12, t2Made: 2, t3Made: 1, ftMade: 5, ftAttempted: 6, fouls: 4, plusMinus: 21 },
+      { playerId: 46, minutes: "19:10", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 11 },
+      { playerId: 66, minutes: "19:45", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: -5 }
+    ]
   }
 ];
