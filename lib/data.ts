@@ -76,7 +76,6 @@ export const matches: Match[] = [
       { playerId: 10, minutes: "17:57", points: 4, t2Made: 2, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: 0 },
       { playerId: 11, minutes: "32:49", points: 5, t2Made: 1, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 6 },
       { playerId: 15, minutes: "14:02", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -4 },
-      { playerId: 19, minutes: "00:00", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 0 },
       { playerId: 24, minutes: "19:02", points: 9, t2Made: 4, t3Made: 0, ftMade: 1, ftAttempted: 4, fouls: 1, plusMinus: 15 },
       { playerId: 27, minutes: "00:00", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 0 },
       { playerId: 44, minutes: "22:18", points: 11, t2Made: 0, t3Made: 3, ftMade: 2, ftAttempted: 2, fouls: 2, plusMinus: 1 },
