@@ -170,5 +170,27 @@ export const matches: Match[] = [
       { playerId: 46, minutes: "19:10", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 11 },
       { playerId: 66, minutes: "19:45", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: -5 }
     ]
+  },
+  {
+    id: 8,
+    date: "2024-11-16",
+    opponent: "Los Halcones",
+    home: false,
+    ourScore: 64,
+    oppScore: 87,
+    stats: [
+      { playerId: 1, minutes: "19:47", points: 6, t2Made: 1, t3Made: 0, ftMade: 4, ftAttempted: 4, fouls: 5, plusMinus: -23 },
+      { playerId: 4, minutes: "19:52", points: 6, t2Made: 3, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -12 },
+      { playerId: 6, minutes: "28:05", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 2, fouls: 2, plusMinus: -9 },
+      { playerId: 9, minutes: "20:55", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -15 },
+      { playerId: 10, minutes: "23:19", points: 4, t2Made: 2, t3Made: 0, ftMade: 0, ftAttempted: 2, fouls: 3, plusMinus: -13 },
+      { playerId: 15, minutes: "00:41", points: 5, t2Made: 1, t3Made: 0, ftMade: 3, ftAttempted: 4, fouls: 1, plusMinus: -10 },
+      { playerId: 19, minutes: "11:06", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: -16 },
+      { playerId: 24, minutes: "21:49", points: 22, t2Made: 2, t3Made: 3, ftMade: 9, ftAttempted: 11, fouls: 1, plusMinus: -13 },
+      { playerId: 27, minutes: "01:38", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -15 },
+      { playerId: 44, minutes: "34:35", points: 11, t2Made: 4, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -15 },
+      { playerId: 46, minutes: "03:06", points: 5, t2Made: 0, t3Made: 1, ftMade: 2, ftAttempted: 2, fouls: 0, plusMinus: -10 },
+      { playerId: 66, minutes: "15:07", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -16 }
+    ]
   }
 ];
