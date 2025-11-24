@@ -190,5 +190,27 @@ export const matches: Match[] = [
       { playerId: 46, minutes: "03:06", points: 5, t2Made: 0, t3Made: 1, ftMade: 2, ftAttempted: 2, fouls: 0, plusMinus: -10 },
       { playerId: 66, minutes: "15:07", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -16 }
     ]
+  },
+  {
+    id: 9,
+    date: "2024-11-23",
+    opponent: "Dfincas Alfara A",
+    home: true,
+    ourScore: 64,
+    oppScore: 73,
+    stats: [
+      { playerId: 5, minutes: "10:27", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: 6 },
+      { playerId: 6, minutes: "22:17", points: 5, t2Made: 1, t3Made: 0, ftMade: 3, ftAttempted: 6, fouls: 0, plusMinus: 1 },
+      { playerId: 7, minutes: "25:20", points: 24, t2Made: 6, t3Made: 2, ftMade: 6, ftAttempted: 11, fouls: 3, plusMinus: -3 },
+      { playerId: 10, minutes: "17:23", points: 6, t2Made: 3, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: -13 },
+      { playerId: 15, minutes: "22:12", points: 5, t2Made: 1, t3Made: 0, ftMade: 3, ftAttempted: 7, fouls: 2, plusMinus: -5 },
+      { playerId: 19, minutes: "11:44", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -8 },
+      { playerId: 21, minutes: "13:15", points: 5, t2Made: 1, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 5, plusMinus: -17 },
+      { playerId: 24, minutes: "14:40", points: 6, t2Made: 0, t3Made: 1, ftMade: 3, ftAttempted: 10, fouls: 3, plusMinus: -6 },
+      { playerId: 27, minutes: "17:07", points: 6, t2Made: 1, t3Made: 1, ftMade: 1, ftAttempted: 4, fouls: 1, plusMinus: 2 },
+      { playerId: 31, minutes: "13:45", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 4, plusMinus: -1 },
+      { playerId: 46, minutes: "17:11", points: 5, t2Made: 1, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 0 },
+      { playerId: 66, minutes: "14:39", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 2, fouls: 3, plusMinus: -1 }
+    ]
   }
 ];
