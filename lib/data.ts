@@ -212,5 +212,26 @@ export const matches: Match[] = [
       { playerId: 46, minutes: "17:11", points: 5, t2Made: 1, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 0 },
       { playerId: 66, minutes: "14:39", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 2, fouls: 3, plusMinus: -1 }
     ]
+  },
+  {
+    id: 10,
+    date: "2024-12-21",
+    opponent: "María Inmaculada",
+    home: false,
+    ourScore: 51,
+    oppScore: 70,
+    stats: [
+      { playerId: 1, minutes: "00:00", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 0 },
+      { playerId: 4, minutes: "14:25", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -6 },
+      { playerId: 5, minutes: "17:02", points: 3, t2Made: 1, t3Made: 0, ftMade: 1, ftAttempted: 2, fouls: 2, plusMinus: -15 },
+      { playerId: 6, minutes: "00:00", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 0 },
+      { playerId: 7, minutes: "36:31", points: 8, t2Made: 2, t3Made: 0, ftMade: 4, ftAttempted: 9, fouls: 2, plusMinus: -15 },
+      { playerId: 9, minutes: "00:00", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 0 },
+      { playerId: 10, minutes: "00:00", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 0 },
+      { playerId: 27, minutes: "31:57", points: 7, t2Made: 2, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: -1 },
+      { playerId: 31, minutes: "34:23", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: -11 },
+      { playerId: 44, minutes: "33:00", points: 25, t2Made: 5, t3Made: 3, ftMade: 6, ftAttempted: 11, fouls: 2, plusMinus: -13 },
+      { playerId: 46, minutes: "32:42", points: 5, t2Made: 1, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 4, plusMinus: -9 }
+    ]
   }
 ];
