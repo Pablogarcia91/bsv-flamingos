@@ -273,5 +273,24 @@ export const matches: Match[] = [
       { playerId: 44, minutes: "29:39", points: 7, t2Made: 1, t3Made: 1, ftMade: 2, ftAttempted: 4, fouls: 1, plusMinus: -17 },
       { playerId: 46, minutes: "09:19", points: 5, t2Made: 1, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -8 }
     ]
+  },
+  {
+    id: 13,
+    date: "2026-01-25",
+    opponent: "Secuelas Pías",
+    home: true,
+    ourScore: 45,
+    oppScore: 55,
+    stats: [
+      { playerId: 6, minutes: "27:40", points: 5, t2Made: 2, t3Made: 0, ftMade: 1, ftAttempted: 2, fouls: 3, plusMinus: -11 },
+      { playerId: 7, minutes: "35:18", points: 14, t2Made: 2, t3Made: 3, ftMade: 1, ftAttempted: 2, fouls: 0, plusMinus: -9 },
+      { playerId: 10, minutes: "29:22", points: 4, t2Made: 1, t3Made: 0, ftMade: 2, ftAttempted: 6, fouls: 0, plusMinus: -8 },
+      { playerId: 15, minutes: "23:58", points: 7, t2Made: 2, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 1 },
+      { playerId: 19, minutes: "22:48", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 2, fouls: 2, plusMinus: -5 },
+      { playerId: 21, minutes: "11:38", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: 3 },
+      { playerId: 31, minutes: "11:54", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 0 },
+      { playerId: 44, minutes: "24:37", points: 12, t2Made: 6, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: -9 },
+      { playerId: 46, minutes: "12:45", points: 1, t2Made: 0, t3Made: 0, ftMade: 1, ftAttempted: 2, fouls: 1, plusMinus: -12 }
+    ]
   }
 ];
