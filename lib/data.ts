@@ -292,5 +292,27 @@ export const matches: Match[] = [
       { playerId: 44, minutes: "24:37", points: 12, t2Made: 6, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: -9 },
       { playerId: 46, minutes: "12:45", points: 1, t2Made: 0, t3Made: 0, ftMade: 1, ftAttempted: 2, fouls: 1, plusMinus: -12 }
     ]
+  },
+  {
+    id: 14,
+    date: "2026-02-01",
+    opponent: "Panathimankos",
+    home: false,
+    ourScore: 54,
+    oppScore: 51,
+    stats: [
+      { playerId: 4, minutes: "23:03", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: -2 },
+      { playerId: 6, minutes: "14:48", points: 2, t2Made: 0, t3Made: 0, ftMade: 2, ftAttempted: 2, fouls: 0, plusMinus: -1 },
+      { playerId: 7, minutes: "29:22", points: 5, t2Made: 2, t3Made: 0, ftMade: 1, ftAttempted: 4, fouls: 2, plusMinus: 1 },
+      { playerId: 10, minutes: "15:01", points: 5, t2Made: 1, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -6 },
+      { playerId: 11, minutes: "23:14", points: 14, t2Made: 1, t3Made: 2, ftMade: 6, ftAttempted: 11, fouls: 3, plusMinus: 9 },
+      { playerId: 15, minutes: "12:39", points: 5, t2Made: 2, t3Made: 0, ftMade: 1, ftAttempted: 2, fouls: 3, plusMinus: -3 },
+      { playerId: 19, minutes: "11:41", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: 7 },
+      { playerId: 21, minutes: "13:42", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 4 },
+      { playerId: 24, minutes: "12:38", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 2 },
+      { playerId: 44, minutes: "17:41", points: 13, t2Made: 4, t3Made: 1, ftMade: 2, ftAttempted: 2, fouls: 1, plusMinus: 2 },
+      { playerId: 46, minutes: "04:55", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -7 },
+      { playerId: 66, minutes: "21:16", points: 3, t2Made: 1, t3Made: 0, ftMade: 1, ftAttempted: 4, fouls: 2, plusMinus: 9 }
+    ]
   }
 ];
