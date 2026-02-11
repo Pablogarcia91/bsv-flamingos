@@ -314,5 +314,25 @@ export const matches: Match[] = [
       { playerId: 46, minutes: "04:55", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -7 },
       { playerId: 66, minutes: "21:16", points: 3, t2Made: 1, t3Made: 0, ftMade: 1, ftAttempted: 4, fouls: 2, plusMinus: 9 }
     ]
+  },
+  {
+    id: 15,
+    date: "2026-02-08",
+    opponent: "Drinkers",
+    home: true,
+    ourScore: 54,
+    oppScore: 62,
+    stats: [
+      { playerId: 1, minutes: "20:45", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 2, fouls: 5, plusMinus: -5 },
+      { playerId: 6, minutes: "23:06", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -5 },
+      { playerId: 7, minutes: "24:36", points: 15, t2Made: 2, t3Made: 3, ftMade: 2, ftAttempted: 5, fouls: 2, plusMinus: 3 },
+      { playerId: 9, minutes: "14:22", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: 3 },
+      { playerId: 10, minutes: "27:58", points: 11, t2Made: 5, t3Made: 0, ftMade: 1, ftAttempted: 3, fouls: 3, plusMinus: -5 },
+      { playerId: 11, minutes: "10:39", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 4, plusMinus: -10 },
+      { playerId: 27, minutes: "15:23", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 1 },
+      { playerId: 44, minutes: "24:17", points: 20, t2Made: 6, t3Made: 1, ftMade: 5, ftAttempted: 7, fouls: 1, plusMinus: -11 },
+      { playerId: 46, minutes: "20:53", points: 5, t2Made: 1, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -9 },
+      { playerId: 66, minutes: "18:01", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -2 }
+    ]
   }
 ];
