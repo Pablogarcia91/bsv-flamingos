@@ -334,5 +334,23 @@ export const matches: Match[] = [
       { playerId: 46, minutes: "20:53", points: 5, t2Made: 1, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -9 },
       { playerId: 66, minutes: "18:01", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -2 }
     ]
+  },
+  {
+    id: 16,
+    date: "2026-02-15",
+    opponent: "ATC Na Rovella",
+    home: false,
+    ourScore: 67,
+    oppScore: 55,
+    stats: [
+      { playerId: 4, minutes: "03:38", points: 6, t2Made: 2, t3Made: 0, ftMade: 2, ftAttempted: 2, fouls: 0, plusMinus: -5 },
+      { playerId: 5, minutes: "21:21", points: 4, t2Made: 0, t3Made: 0, ftMade: 4, ftAttempted: 8, fouls: 2, plusMinus: 4 },
+      { playerId: 7, minutes: "30:04", points: 14, t2Made: 3, t3Made: 1, ftMade: 5, ftAttempted: 10, fouls: 1, plusMinus: 12 },
+      { playerId: 19, minutes: "19:38", points: 2, t2Made: 0, t3Made: 0, ftMade: 2, ftAttempted: 2, fouls: 4, plusMinus: 5 },
+      { playerId: 21, minutes: "31:20", points: 5, t2Made: 1, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 9 },
+      { playerId: 44, minutes: "36:32", points: 29, t2Made: 4, t3Made: 5, ftMade: 6, ftAttempted: 8, fouls: 2, plusMinus: 16 },
+      { playerId: 46, minutes: "29:05", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 4 },
+      { playerId: 66, minutes: "28:22", points: 7, t2Made: 2, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 15 }
+    ]
   }
 ];
