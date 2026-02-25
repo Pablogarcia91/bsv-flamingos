@@ -11,7 +11,7 @@ export function Header() {
         </h1>
       </Link>
       <div className="text-vice-blue text-xs md:text-sm font-semibold tracking-wide uppercase mt-2">
-        Liga Segunda Alquiería del bàsquet • Temporada 2024-25
+        Liga Segunda Alquiería del bàsquet • Temporada 2025-26
       </div>
     </header>
   );

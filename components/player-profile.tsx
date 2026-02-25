@@ -107,7 +107,7 @@ export function PlayerProfile({ playerId, players, matches, onBack }: PlayerProf
           {/* Season Quick Stats */}
           <section>
             <h2 className="font-bebas text-3xl md:text-4xl tracking-wider text-vice-pink mb-6 uppercase">
-              Temporada 2024-25
+              Temporada 2025-26
             </h2>
             <div className="bg-vice-dark border-2 border-vice-pink rounded-lg p-6 md:p-8">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
