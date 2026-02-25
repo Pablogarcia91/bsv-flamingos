@@ -23,7 +23,7 @@ export const players: Player[] = [
 export const matches: Match[] = [
   {
     id: 1,
-    date: "2024-09-28",
+    date: "2025-09-28",
     opponent: "Secuelas Pías",
     home: false,
     ourScore: 54,
@@ -45,7 +45,7 @@ export const matches: Match[] = [
   },
   {
     id: 2,
-    date: "2024-10-05",
+    date: "2025-10-05",
     opponent: "Panathimankos",
     home: true,
     ourScore: 52,
@@ -64,7 +64,7 @@ export const matches: Match[] = [
   },
   {
     id: 3,
-    date: "2024-10-12",
+    date: "2025-10-12",
     opponent: "Drinkers",
     home: false,
     ourScore: 49,
@@ -84,7 +84,7 @@ export const matches: Match[] = [
   },
   {
     id: 4,
-    date: "2024-10-19",
+    date: "2025-10-19",
     opponent: "ATC Na Rovella",
     home: true,
     ourScore: 61,
@@ -106,7 +106,7 @@ export const matches: Match[] = [
   },
   {
     id: 5,
-    date: "2024-10-26",
+    date: "2025-10-26",
     opponent: "Stop Basket",
     home: true,
     ourScore: 63,
@@ -127,7 +127,7 @@ export const matches: Match[] = [
   },
   {
     id: 6,
-    date: "2024-11-02",
+    date: "2025-11-02",
     opponent: "BBT 1QBT",
     home: false,
     ourScore: 70,
@@ -149,7 +149,7 @@ export const matches: Match[] = [
   },
   {
     id: 7,
-    date: "2024-11-09",
+    date: "2025-11-09",
     opponent: "Manises Eliseo A",
     home: false,
     ourScore: 62,
@@ -171,7 +171,7 @@ export const matches: Match[] = [
   },
   {
     id: 8,
-    date: "2024-11-16",
+    date: "2025-11-16",
     opponent: "Los Halcones",
     home: false,
     ourScore: 64,
@@ -193,7 +193,7 @@ export const matches: Match[] = [
   },
   {
     id: 9,
-    date: "2024-11-23",
+    date: "2025-11-23",
     opponent: "Dfincas Alfara A",
     home: true,
     ourScore: 64,
@@ -215,7 +215,7 @@ export const matches: Match[] = [
   },
   {
     id: 10,
-    date: "2024-12-21",
+    date: "2025-12-21",
     opponent: "María Inmaculada",
     home: false,
     ourScore: 51,
@@ -236,7 +236,7 @@ export const matches: Match[] = [
   },
   {
     id: 11,
-    date: "2025-01-11",
+    date: "2026-01-11",
     opponent: "Sanfrantoko9ers",
     home: false,
     ourScore: 50,
@@ -256,7 +256,7 @@ export const matches: Match[] = [
   },
   {
     id: 12,
-    date: "2025-01-18",
+    date: "2026-01-18",
     opponent: "Xuloplastika",
     home: true,
     ourScore: 47,
