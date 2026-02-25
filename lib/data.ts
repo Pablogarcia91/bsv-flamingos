@@ -352,5 +352,25 @@ export const matches: Match[] = [
       { playerId: 46, minutes: "29:05", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 4 },
       { playerId: 66, minutes: "28:22", points: 7, t2Made: 2, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 15 }
     ]
+  },
+  {
+    id: 17,
+    date: "2026-02-22",
+    opponent: "San Pedro Pascual 'B'",
+    home: true,
+    ourScore: 61,
+    oppScore: 40,
+    stats: [
+      { playerId: 5, minutes: "16:14", points: 7, t2Made: 1, t3Made: 1, ftMade: 2, ftAttempted: 4, fouls: 0, plusMinus: 21 },
+      { playerId: 7, minutes: "22:00", points: 11, t2Made: 4, t3Made: 1, ftMade: 0, ftAttempted: 1, fouls: 1, plusMinus: 25 },
+      { playerId: 9, minutes: "19:17", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: 1 },
+      { playerId: 10, minutes: "17:02", points: 5, t2Made: 2, t3Made: 0, ftMade: 1, ftAttempted: 2, fouls: 0, plusMinus: -7 },
+      { playerId: 11, minutes: "18:00", points: 4, t2Made: 2, t3Made: 0, ftMade: 0, ftAttempted: 1, fouls: 0, plusMinus: -4 },
+      { playerId: 19, minutes: "17:30", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 4, plusMinus: 22 },
+      { playerId: 31, minutes: "19:27", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -4 },
+      { playerId: 44, minutes: "20:04", points: 25, t2Made: 0, t3Made: 8, ftMade: 1, ftAttempted: 1, fouls: 0, plusMinus: 22 },
+      { playerId: 46, minutes: "25:45", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -4 },
+      { playerId: 66, minutes: "24:41", points: 3, t2Made: 0, t3Made: 0, ftMade: 3, ftAttempted: 6, fouls: 2, plusMinus: 33 }
+    ]
   }
 ];
