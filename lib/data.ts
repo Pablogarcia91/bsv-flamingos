@@ -372,5 +372,24 @@ export const matches: Match[] = [
       { playerId: 46, minutes: "25:45", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -4 },
       { playerId: 66, minutes: "24:41", points: 3, t2Made: 0, t3Made: 0, ftMade: 3, ftAttempted: 6, fouls: 2, plusMinus: 33 }
     ]
+  },
+  {
+    id: 18,
+    date: "2026-03-08",
+    opponent: "Stop Basket",
+    home: false,
+    ourScore: 68,
+    oppScore: 34,
+    stats: [
+      { playerId: 7, minutes: "17:52", points: 15, t2Made: 4, t3Made: 1, ftMade: 4, ftAttempted: 7, fouls: 1, plusMinus: 17 },
+      { playerId: 9, minutes: "27:00", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 25 },
+      { playerId: 10, minutes: "19:58", points: 8, t2Made: 4, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: 21 },
+      { playerId: 11, minutes: "26:45", points: 7, t2Made: 2, t3Made: 1, ftMade: 0, ftAttempted: 1, fouls: 1, plusMinus: 15 },
+      { playerId: 19, minutes: "23:06", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: 15 },
+      { playerId: 21, minutes: "22:15", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 11 },
+      { playerId: 24, minutes: "17:56", points: 12, t2Made: 1, t3Made: 3, ftMade: 1, ftAttempted: 2, fouls: 1, plusMinus: 30 },
+      { playerId: 44, minutes: "23:24", points: 15, t2Made: 3, t3Made: 3, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: 31 },
+      { playerId: 46, minutes: "21:44", points: 8, t2Made: 4, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 5 }
+    ]
   }
 ];
