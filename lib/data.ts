@@ -391,5 +391,44 @@ export const matches: Match[] = [
       { playerId: 44, minutes: "23:24", points: 15, t2Made: 3, t3Made: 3, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: 31 },
       { playerId: 46, minutes: "21:44", points: 8, t2Made: 4, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 5 }
     ]
+  },
+  {
+    id: 19,
+    date: "2026-03-22",
+    opponent: "BBT 1QBT",
+    home: true,
+    ourScore: 62,
+    oppScore: 68,
+    stats: [
+      { playerId: 4, minutes: "32:10", points: 12, t2Made: 5, t3Made: 0, ftMade: 2, ftAttempted: 4, fouls: 2, plusMinus: -6 },
+      { playerId: 9, minutes: "19:36", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 2, fouls: 1, plusMinus: 2 },
+      { playerId: 10, minutes: "22:44", points: 4, t2Made: 1, t3Made: 0, ftMade: 2, ftAttempted: 2, fouls: 4, plusMinus: -4 },
+      { playerId: 15, minutes: "26:24", points: 4, t2Made: 0, t3Made: 1, ftMade: 1, ftAttempted: 2, fouls: 3, plusMinus: -9 },
+      { playerId: 21, minutes: "16:37", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: 7 },
+      { playerId: 31, minutes: "14:06", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: -13 },
+      { playerId: 44, minutes: "37:52", points: 35, t2Made: 9, t3Made: 5, ftMade: 2, ftAttempted: 2, fouls: 1, plusMinus: -2 },
+      { playerId: 66, minutes: "30:31", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: -5 }
+    ]
+  },
+  {
+    id: 20,
+    date: "2026-03-29",
+    opponent: "Manises Eliseo A",
+    home: true,
+    ourScore: 59,
+    oppScore: 46,
+    stats: [
+      { playerId: 5, minutes: "19:24", points: 6, t2Made: 3, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: 9 },
+      { playerId: 7, minutes: "22:40", points: 3, t2Made: 1, t3Made: 0, ftMade: 1, ftAttempted: 2, fouls: 2, plusMinus: 3 },
+      { playerId: 9, minutes: "16:46", points: 6, t2Made: 0, t3Made: 2, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 3 },
+      { playerId: 10, minutes: "18:04", points: 12, t2Made: 6, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 1 },
+      { playerId: 11, minutes: "26:02", points: 4, t2Made: 0, t3Made: 1, ftMade: 1, ftAttempted: 1, fouls: 0, plusMinus: 13 },
+      { playerId: 15, minutes: "17:45", points: 12, t2Made: 3, t3Made: 2, ftMade: 0, ftAttempted: 2, fouls: 2, plusMinus: 2 },
+      { playerId: 19, minutes: "20:22", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 5, plusMinus: 18 },
+      { playerId: 24, minutes: "02:48", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 0 },
+      { playerId: 31, minutes: "10:03", points: 4, t2Made: 0, t3Made: 1, ftMade: 1, ftAttempted: 2, fouls: 5, plusMinus: 6 },
+      { playerId: 44, minutes: "18:52", points: 8, t2Made: 2, t3Made: 1, ftMade: 1, ftAttempted: 4, fouls: 0, plusMinus: -2 },
+      { playerId: 66, minutes: "27:14", points: 4, t2Made: 2, t3Made: 0, ftMade: 0, ftAttempted: 4, fouls: 3, plusMinus: 12 }
+    ]
   }
 ];
