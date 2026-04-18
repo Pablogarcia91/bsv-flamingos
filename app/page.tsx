@@ -1,32 +1,6 @@
-"use client";
-
 import { players, matches } from "@/lib/data";
-import { Header } from "@/components/header";
-import { TabsNav } from "@/components/tabs-nav";
 import { GeneralTab } from "@/components/general-tab";
-import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const router = useRouter();
-
-  const handlePlayerClick = (playerId: number) => {
-    router.push(`/jugador/${playerId}`);
-  };
-
-  const handleMatchSelect = (matchId: number) => {
-    router.push(`/partido/${matchId}`);
-  };
-
-  return (
-    <div className="container max-w-7xl mx-auto px-5 py-5 relative z-10">
-      <Header />
-      <TabsNav />
-      <GeneralTab
-        players={players}
-        matches={matches}
-        onPlayerClick={handlePlayerClick}
-        onMatchSelect={handleMatchSelect}
-      />
-    </div>
-  );
+  return <GeneralTab players={players} matches={matches} />;
 }

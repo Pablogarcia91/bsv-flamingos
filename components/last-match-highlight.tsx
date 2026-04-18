@@ -1,43 +1,54 @@
-"use client";
-
+import Link from "next/link";
 import { Match } from "@/lib/types";
-import { cn } from "@/lib/utils";
 
 interface LastMatchHighlightProps {
   match: Match;
-  onViewDetails: (matchId: number) => void;
 }
 
-export function LastMatchHighlight({ match, onViewDetails }: LastMatchHighlightProps) {
+export function LastMatchHighlight({ match }: LastMatchHighlightProps) {
   const isWin = match.ourScore > match.oppScore;
 
   return (
-    <div className="bg-vice-dark border-2 border-vice-pink rounded-lg p-4 mb-6 animate-neon-fade-in">
-      <div className="flex flex-col gap-3 items-center text-center">
-        <h3 className="text-sm text-vice-blue uppercase tracking-wide font-bold">Último Partido</h3>
-        <div className="flex items-center gap-2 text-white font-bebas text-xl">
-          <span>BSV</span>
-          <span className={cn(
-            "font-bold",
-            isWin ? "text-vice-blue" : "text-vice-pink"
-          )}>
+    <div className="relative bg-vice-dark border border-vice-pink/40 rounded-xl p-5 mb-6 overflow-hidden">
+      {/* Background glow */}
+      <div
+        className="absolute inset-0 opacity-20 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: isWin
+            ? 'radial-gradient(ellipse at center, rgba(0,206,209,0.3) 0%, transparent 70%)'
+            : 'radial-gradient(ellipse at center, rgba(255,20,147,0.3) 0%, transparent 70%)'
+        }}
+      />
+
+      <div className="relative flex flex-col gap-3 items-center text-center">
+        <div className="text-xs text-white/80 uppercase tracking-widest font-semibold">Último Partido</div>
+
+        {/* Score row */}
+        <div className="flex items-center gap-4 font-bebas text-3xl md:text-4xl">
+          <span className="text-white/80 text-lg">BSV</span>
+          <span className={isWin ? "text-vice-blue" : "text-vice-pink"}>
             {match.ourScore}
           </span>
-          <span className="text-vice-blue">-</span>
-          <span className={cn(
-            "font-bold",
-            !isWin ? "text-vice-blue" : "text-vice-pink"
-          )}>
+          <span className="text-white/75 text-xl">—</span>
+          <span className={!isWin ? "text-vice-blue" : "text-vice-pink"}>
             {match.oppScore}
           </span>
-          <span>{match.opponent}</span>
+          <span className="text-white/80 text-lg">{match.opponent}</span>
         </div>
-        <button
-          onClick={() => onViewDetails(match.id)}
-          className="text-vice-blue text-sm hover:text-vice-pink transition-colors underline"
-        >
-          Ver estadísticas completas →
-        </button>
+
+        {/* Result chip + link */}
+        <div className="flex items-center gap-3">
+          <span className={isWin ? "chip-win" : "chip-loss"}>
+            {isWin ? "VICTORIA" : "DERROTA"}
+          </span>
+          <Link
+            href={`/partido/${match.id}`}
+            className="text-white/80 text-xs hover:text-vice-blue transition-colors"
+          >
+            Ver estadísticas →
+          </Link>
+        </div>
       </div>
     </div>
   );

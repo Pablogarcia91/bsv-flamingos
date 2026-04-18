@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 interface StatCardProps {
@@ -9,16 +8,19 @@ interface StatCardProps {
 
 export function StatCard({ label, value, className }: StatCardProps) {
   return (
-    <Card className={cn(
-      "text-center p-6 transition-all hover:transform hover:-translate-y-1 hover:border-vice-blue relative overflow-hidden",
+    <div className={cn(
+      "relative text-center p-6 rounded-lg bg-vice-dark border border-vice-pink/30 overflow-hidden",
       className
     )}>
-      <div className="font-bebas text-sm tracking-wider text-vice-blue uppercase mb-2">
+      {/* Top accent bar */}
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-vice-pink via-vice-blue to-vice-pink" />
+
+      <div className="font-bebas text-xs tracking-widest text-vice-blue uppercase mb-2">
         {label}
       </div>
-      <div className="font-bebas text-5xl tracking-wider text-white">
+      <div className="font-bebas text-6xl tracking-wider text-vice-pink">
         {value}
       </div>
-    </Card>
+    </div>
   );
 }

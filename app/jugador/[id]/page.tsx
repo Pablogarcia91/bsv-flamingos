@@ -1,26 +1,11 @@
-"use client";
-
 import { players, matches } from "@/lib/data";
 import { PlayerProfile } from "@/components/player-profile";
-import { useRouter, useParams } from "next/navigation";
 
-export default function JugadorPage() {
-  const router = useRouter();
-  const params = useParams();
-  const playerId = parseInt(params.id as string);
+export function generateStaticParams() {
+  return players.map(p => ({ id: String(p.id) }));
+}
 
-  const handleBack = () => {
-    router.back();
-  };
-
-  return (
-    <div className="container max-w-7xl mx-auto px-5 py-5 relative z-10">
-      <PlayerProfile
-        playerId={playerId}
-        players={players}
-        matches={matches}
-        onBack={handleBack}
-      />
-    </div>
-  );
+export default async function JugadorPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  return <PlayerProfile playerId={parseInt(id)} players={players} matches={matches} />;
 }

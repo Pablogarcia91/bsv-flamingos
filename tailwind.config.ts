@@ -17,7 +17,7 @@ const config: Config = {
         'vice-yellow': '#FFD23F',
       },
       fontFamily: {
-        'bebas': ['Bebas Neue', 'cursive'],
+        'bebas': ['Bebas Neue', 'system-ui', 'sans-serif'],
         'rajdhani': ['Rajdhani', 'sans-serif'],
       },
     },

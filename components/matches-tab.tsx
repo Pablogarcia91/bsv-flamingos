@@ -1,43 +1,49 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import Link from "next/link";
 import { Match } from "@/lib/types";
 import { calculateTeamTotals } from "@/lib/stats";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowUp, ArrowDown } from "lucide-react";
 
 interface MatchesTabProps {
   matches: Match[];
-  onMatchSelect?: (matchId: number) => void;
 }
 
-export function MatchesTab({ matches, onMatchSelect }: MatchesTabProps) {
+interface SortButtonProps {
+  field: string;
+  children: React.ReactNode;
+  sortField: string | null;
+  sortDirection: 'asc' | 'desc';
+  onSort: (field: string) => void;
+}
+
+function SortButton({ field, children, sortField, sortDirection, onSort }: SortButtonProps) {
+  const isActive = sortField === field;
+  return (
+    <button
+      onClick={() => onSort(field)}
+      className={cn(
+        "flex items-center gap-1 hover:text-vice-blue transition-colors",
+        isActive && "text-white"
+      )}
+    >
+      {children}
+      {isActive && (
+        sortDirection === 'desc' ?
+          <ArrowDown className="h-3.5 w-3.5" /> :
+          <ArrowUp className="h-3.5 w-3.5" />
+      )}
+    </button>
+  );
+}
+
+export function MatchesTab({ matches }: MatchesTabProps) {
   const [sortField, setSortField] = useState<string | null>(null);
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
-
-  const SortButton = ({ field, children }: { field: string; children: React.ReactNode }) => {
-    const isActive = sortField === field;
-    return (
-      <button
-        onClick={() => handleSort(field)}
-        className={cn(
-          "flex items-center gap-1 hover:text-vice-blue transition-colors",
-          isActive && "text-white"
-        )}
-      >
-        {children}
-        {isActive && (
-          sortDirection === 'desc' ?
-            <ArrowDown className="h-3.5 w-3.5" /> :
-            <ArrowUp className="h-3.5 w-3.5" />
-        )}
-      </button>
-    );
-  };
-
-  const teamTotals = calculateTeamTotals(matches);
 
   const handleSort = (field: string) => {
     if (sortField === field) {
@@ -48,110 +54,90 @@ export function MatchesTab({ matches, onMatchSelect }: MatchesTabProps) {
     }
   };
 
-  const sortedGames = [...teamTotals].sort((a, b) => {
-    if (!sortField) {
-      // Default: ordenar por fecha descendente (más reciente primero)
-      const dateA = new Date(a.date).getTime();
-      const dateB = new Date(b.date).getTime();
-      return dateB - dateA;
-    }
+  const sortedGames = useMemo(() => {
+    const teamTotals = calculateTeamTotals(matches);
+    return [...teamTotals].sort((a, b) => {
+      if (!sortField) {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      }
 
-    let aValue: any = a[sortField as keyof typeof a];
-    let bValue: any = b[sortField as keyof typeof b];
+      let aValue: number | string = a[sortField as keyof typeof a] as number | string;
+      let bValue: number | string = b[sortField as keyof typeof b] as number | string;
 
-    if (sortField === 'date') {
-      aValue = new Date(aValue).getTime();
-      bValue = new Date(bValue).getTime();
-    }
+      if (sortField === 'date') {
+        aValue = new Date(aValue as string).getTime();
+        bValue = new Date(bValue as string).getTime();
+      }
 
-    if (sortDirection === 'asc') {
-      return aValue > bValue ? 1 : -1;
-    } else {
-      return aValue < bValue ? 1 : -1;
-    }
-  });
+      return sortDirection === 'asc' ? (aValue > bValue ? 1 : -1) : (aValue < bValue ? 1 : -1);
+    });
+  }, [matches, sortField, sortDirection]);
 
   return (
     <div className="animate-neon-fade-in overflow-x-auto">
-      <Table className="bg-vice-dark border-2 border-vice-pink rounded-lg overflow-hidden">
+      <Table aria-label="Partidos de la temporada" className="bg-vice-dark border-2 border-vice-pink rounded-lg overflow-hidden">
         <TableHeader>
-          <TableRow className="border-none hover:bg-vice-pink/10">
-            <TableHead className="sticky left-0 z-20 bg-vice-pink">
-              <SortButton field="date">Fecha</SortButton>
+          <TableRow className="border-none hover:bg-transparent">
+            <TableHead className="sticky left-0 z-20 w-24 md:w-36 bg-gradient-to-r from-vice-pink to-vice-pink/80 text-white font-bebas tracking-wider">
+              <SortButton field="date" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>Fecha</SortButton>
             </TableHead>
             <TableHead>Rival</TableHead>
-            <TableHead>L/V</TableHead>
+            <TableHead className="hidden sm:table-cell">L/V</TableHead>
             <TableHead>
-              <SortButton field="ourScore">Resultado</SortButton>
+              <SortButton field="ourScore" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>Res.</SortButton>
             </TableHead>
-            <TableHead>
-              <SortButton field="t2Made">T2</SortButton>
+            <TableHead className="hidden sm:table-cell">
+              <SortButton field="t2Made" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>T2</SortButton>
             </TableHead>
-            <TableHead>
-              <SortButton field="t3Made">T3</SortButton>
+            <TableHead className="hidden sm:table-cell">
+              <SortButton field="t3Made" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>T3</SortButton>
             </TableHead>
-            <TableHead>
-              <SortButton field="ftMade">TL</SortButton>
+            <TableHead className="hidden md:table-cell">
+              <SortButton field="ftMade" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>TL</SortButton>
             </TableHead>
-            <TableHead>
-              <SortButton field="fouls">Faltas</SortButton>
+            <TableHead className="hidden md:table-cell">
+              <SortButton field="fouls" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>Faltas</SortButton>
             </TableHead>
             <TableHead>V/D</TableHead>
-            <TableHead></TableHead>
+            <TableHead><span className="sr-only">Acciones</span></TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {sortedGames.map((game) => {
-            // Formato correcto: si somos visitantes, nuestro score va segundo
             const displayScore = game.home
               ? `${game.ourScore}-${game.oppScore}`
               : `${game.oppScore}-${game.ourScore}`;
 
             return (
-              <TableRow
-                key={game.id}
-                className={cn(
-                  "hover:bg-vice-pink/5",
-                  game.hasData && onMatchSelect && "cursor-pointer"
-                )}
-                onClick={() => {
-                  if (game.hasData && onMatchSelect) {
-                    onMatchSelect(game.id);
-                  }
-                }}
-              >
-                <TableCell className="sticky left-0 z-10 bg-vice-dark">{new Date(game.date).toLocaleDateString('es-ES')}</TableCell>
-                <TableCell className="font-bold">{game.opponent}</TableCell>
-                <TableCell>{game.home ? 'LOCAL' : 'VIS'}</TableCell>
+              <TableRow key={game.id} className="border-l-2 border-l-transparent hover:border-l-vice-pink hover:bg-vice-pink/5 transition-colors odd:bg-[#0d0d0d] even:bg-vice-dark">
+                <TableCell className="sticky left-0 z-10 w-24 md:w-36 bg-vice-dark">
+                  {new Date(game.date).toLocaleDateString('es-ES')}
+                </TableCell>
+                <TableCell className="font-bold truncate max-w-[100px] md:max-w-none">{game.opponent}</TableCell>
+                <TableCell className="hidden sm:table-cell">{game.home ? 'LOCAL' : 'VIS'}</TableCell>
                 <TableCell className="font-bold">{displayScore}</TableCell>
                 {game.hasData ? (
                   <>
-                    <TableCell>{game.t2Made}</TableCell>
-                    <TableCell>{game.t3Made}</TableCell>
-                    <TableCell>{game.ftMade}/{game.ftAttempted}</TableCell>
-                    <TableCell>{game.fouls}</TableCell>
+                    <TableCell className="hidden sm:table-cell">{game.t2Made}</TableCell>
+                    <TableCell className="hidden sm:table-cell">{game.t3Made}</TableCell>
+                    <TableCell className="hidden md:table-cell">{game.ftMade}/{game.ftAttempted}</TableCell>
+                    <TableCell className="hidden md:table-cell">{game.fouls}</TableCell>
                   </>
                 ) : (
-                  <TableCell colSpan={4} className="text-center italic text-vice-blue">
-                    ⏳ Procesando datos...
+                  <TableCell colSpan={4} className="hidden sm:table-cell text-center italic text-vice-blue">
+                    <span aria-hidden="true">⏳</span> Procesando...
                   </TableCell>
                 )}
-                <TableCell className={cn(
-                  "font-bold",
-                  game.result === 'V' ? "text-vice-blue" : "text-vice-pink"
-                )}>
-                  {game.result}
+                <TableCell>
+                  <span className={game.result === 'V' ? "chip-win" : "chip-loss"}>
+                    {game.result === 'V' ? 'V' : 'D'}
+                  </span>
                 </TableCell>
-                <TableCell onClick={(e) => e.stopPropagation()}>
-                  {game.hasData && onMatchSelect && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => onMatchSelect(game.id)}
-                      className="text-xs"
-                    >
-                      Ver Estadísticas
-                    </Button>
+                <TableCell>
+                  {game.hasData && (
+                    <Link href={`/partido/${game.id}`} className={cn(buttonVariants({ variant: "outline", size: "sm" }), "text-xs whitespace-nowrap")}>
+                      <span className="hidden sm:inline">Ver </span>Stats
+                    </Link>
                   )}
                 </TableCell>
               </TableRow>

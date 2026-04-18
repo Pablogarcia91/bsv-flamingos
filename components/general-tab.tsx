@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import Link from "next/link";
 import { Player, Match } from "@/lib/types";
 import { calculatePlayerTotals } from "@/lib/stats";
 import { PositionBadge } from "./position-badge";
-import { LastMatchHighlight } from "./last-match-highlight";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 import { ArrowUp, ArrowDown } from "lucide-react";
@@ -12,170 +12,241 @@ import { ArrowUp, ArrowDown } from "lucide-react";
 interface GeneralTabProps {
   players: Player[];
   matches: Match[];
-  onPlayerClick: (playerId: number) => void;
-  onMatchSelect: (matchId: number) => void;
 }
 
-export function GeneralTab({ players, matches, onPlayerClick, onMatchSelect }: GeneralTabProps) {
+interface SortButtonProps {
+  field: string;
+  children: React.ReactNode;
+  sortField: string;
+  sortDirection: 'asc' | 'desc';
+  onSort: (field: string) => void;
+}
+
+function SortButton({ field, children, sortField, sortDirection, onSort }: SortButtonProps) {
+  const isActive = sortField === field;
+  return (
+    <button
+      onClick={() => onSort(field)}
+      className={cn(
+        "flex items-center gap-1 hover:text-vice-blue transition-colors whitespace-nowrap",
+        isActive ? "text-white" : "text-white/60"
+      )}
+    >
+      {children}
+      {isActive && (
+        sortDirection === 'desc'
+          ? <ArrowDown className="h-3 w-3" />
+          : <ArrowUp className="h-3 w-3" />
+      )}
+    </button>
+  );
+}
+
+const POSITIONS = ["Todos", "Base", "Alero", "Pívot"] as const;
+
+export function GeneralTab({ players, matches }: GeneralTabProps) {
   const [sortField, setSortField] = useState<string>('points');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
+  const [posFilter, setPosFilter] = useState<string>("Todos");
 
-  const SortButton = ({ field, children }: { field: string; children: React.ReactNode }) => {
-    const isActive = sortField === field;
-    return (
-      <button
-        onClick={() => handleSort(field)}
-        className={cn(
-          "flex items-center gap-1 hover:text-vice-blue transition-colors",
-          isActive && "text-white"
-        )}
-      >
-        {children}
-        {isActive && (
-          sortDirection === 'desc' ?
-            <ArrowDown className="h-3.5 w-3.5" /> :
-            <ArrowUp className="h-3.5 w-3.5" />
-        )}
-      </button>
-    );
-  };
-
-  const wins = matches.filter(m => m.ourScore > m.oppScore).length;
-  const losses = matches.length - wins;
-  const totalOurPoints = matches.reduce((sum, m) => sum + m.ourScore, 0);
-  const totalOppPoints = matches.reduce((sum, m) => sum + m.oppScore, 0);
-  const avgOurPoints = (totalOurPoints / matches.length).toFixed(1);
-  const avgOppPoints = (totalOppPoints / matches.length).toFixed(1);
-
-  const playerTotals = calculatePlayerTotals(players, matches).filter(p => p.games > 0);
+  const teamStats = useMemo(() => {
+    const wins = matches.filter(m => m.ourScore > m.oppScore).length;
+    const losses = matches.length - wins;
+    const totalOur = matches.reduce((s, m) => s + m.ourScore, 0);
+    const totalOpp = matches.reduce((s, m) => s + m.oppScore, 0);
+    return {
+      wins,
+      losses,
+      avgOur: (totalOur / matches.length).toFixed(1),
+      avgOpp: (totalOpp / matches.length).toFixed(1),
+    };
+  }, [matches]);
 
   const handleSort = (field: string) => {
     if (sortField === field) {
-      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+      setSortDirection(d => d === 'asc' ? 'desc' : 'asc');
     } else {
       setSortField(field);
       setSortDirection('desc');
     }
   };
 
-  const sortedPlayers = [...playerTotals].sort((a, b) => {
-    let aValue: any = a[sortField as keyof typeof a];
-    let bValue: any = b[sortField as keyof typeof b];
-
-    if (sortField === 'totalMinutes') {
-      aValue = a.games > 0 ? a.totalMinutes / a.games : 0;
-      bValue = b.games > 0 ? b.totalMinutes / b.games : 0;
-    }
-
-    if (sortDirection === 'asc') {
-      return aValue > bValue ? 1 : -1;
-    } else {
-      return aValue < bValue ? 1 : -1;
-    }
-  });
+  const sortedPlayers = useMemo(() => {
+    return calculatePlayerTotals(players, matches)
+      .filter(p => p.games > 0)
+      .filter(p => posFilter === "Todos" || p.position === posFilter)
+      .sort((a, b) => {
+        let av: number = a[sortField as keyof typeof a] as number;
+        let bv: number = b[sortField as keyof typeof b] as number;
+        if (sortField === 'totalMinutes') {
+          av = a.games > 0 ? a.totalMinutes / a.games : 0;
+          bv = b.games > 0 ? b.totalMinutes / b.games : 0;
+        }
+        return sortDirection === 'asc' ? (av > bv ? 1 : -1) : (av < bv ? 1 : -1);
+      });
+  }, [players, matches, sortField, sortDirection, posFilter]);
 
   const lastMatch = matches.length > 0 ? matches[matches.length - 1] : null;
+  const isWin = lastMatch ? lastMatch.ourScore > lastMatch.oppScore : false;
 
   return (
-    <div className="animate-neon-fade-in">
-      {/* Last Match Highlight */}
-      {lastMatch && (
-        <LastMatchHighlight
-          match={lastMatch}
-          onViewDetails={onMatchSelect}
-        />
-      )}
+    <div className="animate-neon-fade-in space-y-6">
 
-      <div className="bg-vice-dark border-2 border-vice-pink rounded-lg p-4 md:p-6 mb-10">
-        <div className="grid grid-cols-4 gap-3 md:gap-8">
-          <div className="text-center">
-            <div className="text-3xl md:text-5xl font-bebas text-white mb-1">{matches.length}</div>
-            <div className="text-[10px] md:text-sm text-vice-blue uppercase tracking-wide">Partidos Jugados</div>
+      {/* ── TOP ROW: dos cards separadas ── */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        {/* Último partido */}
+        {lastMatch ? (
+          <div className="bg-vice-dark border border-vice-pink/25 rounded-xl flex flex-col overflow-hidden">
+            <div className="px-5 pt-3 pb-2 border-b border-vice-pink/15">
+              <span className="text-[10px] text-white/75 uppercase tracking-widest">Último partido</span>
+            </div>
+            <div className="px-4 md:px-5 py-4 flex-1 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <div className="flex items-center gap-2 font-bebas text-2xl md:text-3xl leading-none min-w-0">
+                <span className="text-white text-base shrink-0">BSV</span>
+                <span className={isWin ? "text-vice-blue" : "text-vice-pink"}>{lastMatch.ourScore}</span>
+                <span className="text-white/65">—</span>
+                <span className={!isWin ? "text-vice-blue" : "text-vice-pink"}>{lastMatch.oppScore}</span>
+                <span className="text-white text-base truncate max-w-[100px] sm:max-w-[160px]">{lastMatch.opponent}</span>
+              </div>
+              <div className="flex items-center gap-3 ml-auto shrink-0">
+                <span className={isWin ? "chip-win" : "chip-loss"}>{isWin ? "V" : "D"}</span>
+                <Link
+                  href={`/partido/${lastMatch.id}`}
+                  className="text-xs text-white/75 hover:text-vice-blue transition-colors whitespace-nowrap"
+                >
+                  Ver stats →
+                </Link>
+              </div>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-5xl font-bebas text-white mb-1">{wins}-{losses}</div>
-            <div className="text-[10px] md:text-sm text-vice-blue uppercase tracking-wide">Récord</div>
+        ) : (
+          <div className="bg-vice-dark border border-vice-pink/25 rounded-xl flex flex-col overflow-hidden">
+            <div className="px-5 pt-3 pb-2 border-b border-vice-pink/15">
+              <span className="text-[10px] text-white/75 uppercase tracking-widest">Último partido</span>
+            </div>
+            <div className="px-5 flex-1 flex items-center">
+              <span className="text-white/65 text-sm">Sin partidos</span>
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-5xl font-bebas text-white mb-1">{avgOurPoints}</div>
-            <div className="text-[10px] md:text-sm text-vice-blue uppercase tracking-wide">Promedio Favor</div>
+        )}
+
+        {/* Récords del equipo */}
+        <div className="bg-vice-dark border border-vice-pink/25 rounded-xl flex flex-col overflow-hidden">
+          <div className="px-5 pt-3 pb-2 border-b border-vice-pink/15">
+            <span className="text-[10px] text-white/75 uppercase tracking-widest">Récord del equipo</span>
           </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-5xl font-bebas text-white mb-1">{avgOppPoints}</div>
-            <div className="text-[10px] md:text-sm text-vice-blue uppercase tracking-wide">Promedio Contra</div>
+          <div className="grid grid-cols-4 divide-x divide-vice-pink/15 flex-1">
+            <div className="px-1 md:px-3 py-3 text-center flex flex-col justify-center">
+              <div className="font-bebas text-xl md:text-3xl text-white leading-none">{matches.length}</div>
+              <div className="text-[10px] text-white/75 uppercase tracking-widest mt-0.5">PJ</div>
+            </div>
+            <div className="px-1 md:px-3 py-3 text-center flex flex-col justify-center">
+              <div className="font-bebas text-xl md:text-3xl text-vice-blue leading-none">{teamStats.wins}-{teamStats.losses}</div>
+              <div className="text-[10px] text-white/75 uppercase tracking-widest mt-0.5">Record</div>
+            </div>
+            <div className="px-1 md:px-3 py-3 text-center flex flex-col justify-center">
+              <div className="font-bebas text-xl md:text-3xl text-vice-pink leading-none">{teamStats.avgOur}</div>
+              <div className="text-[10px] text-white/75 uppercase tracking-widest mt-0.5">PPP F</div>
+            </div>
+            <div className="px-1 md:px-3 py-3 text-center flex flex-col justify-center">
+              <div className="font-bebas text-xl md:text-3xl text-white leading-none">{teamStats.avgOpp}</div>
+              <div className="text-[10px] text-white/75 uppercase tracking-widest mt-0.5">PPP C</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="overflow-x-auto">
-        <Table className="bg-vice-dark border-2 border-vice-pink rounded-lg overflow-hidden">
-          <TableHeader>
-            <TableRow className="border-none hover:bg-vice-pink/10">
-              <TableHead className="sticky left-0 z-20 bg-vice-pink">Jugador</TableHead>
-              <TableHead>Pos</TableHead>
-              <TableHead>
-                <SortButton field="games">PJ</SortButton>
-              </TableHead>
-              <TableHead>
-                <SortButton field="totalMinutes">MIN</SortButton>
-              </TableHead>
-              <TableHead>
-                <SortButton field="points">PTS</SortButton>
-              </TableHead>
-              <TableHead>
-                <SortButton field="t2Made">T2</SortButton>
-              </TableHead>
-              <TableHead>
-                <SortButton field="t3Made">T3</SortButton>
-              </TableHead>
-              <TableHead>
-                <SortButton field="ftMade">TL</SortButton>
-              </TableHead>
-              <TableHead>
-                <SortButton field="fouls">Faltas</SortButton>
-              </TableHead>
-              <TableHead>
-                <SortButton field="plusMinus">+/-</SortButton>
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {sortedPlayers.map((player) => {
-              const avgMinutes = player.games > 0 ? (player.totalMinutes / player.games).toFixed(1) : '0.0';
-              const ftPct = player.ftAttempted > 0 ? Math.round((player.ftMade / player.ftAttempted) * 100) : 0;
+      {/* ── TABLA: filtros + columnas ── */}
+      <div>
+        {/* Filtros de posición */}
+        <div className="flex items-center gap-2 mb-3 flex-wrap">
+          <span className="text-xs text-white/75 uppercase tracking-widest mr-1">Filtrar:</span>
+          {POSITIONS.map(pos => (
+            <button
+              key={pos}
+              onClick={() => setPosFilter(pos)}
+              className={cn(
+                "text-xs font-semibold px-3 py-1 rounded-full border transition-colors",
+                posFilter === pos
+                  ? "bg-vice-pink border-vice-pink text-white"
+                  : "border-white/15 text-white/80 hover:border-vice-pink/50 hover:text-white"
+              )}
+            >
+              {pos}
+            </button>
+          ))}
+          <span className="ml-auto text-xs text-white/65">{sortedPlayers.length} jugadores</span>
+        </div>
 
-              return (
-                <TableRow key={player.id} className="cursor-pointer hover:bg-vice-pink/5">
-                  <TableCell className="sticky left-0 z-10 bg-vice-dark">
-                    <button
-                      onClick={() => onPlayerClick(player.id)}
-                      className="text-vice-blue font-bold hover:text-vice-pink transition-all hover:translate-x-1 inline-block"
-                    >
-                      {player.nickname} <span className="text-vice-pink">#{player.number}</span>
-                    </button>
-                  </TableCell>
-                  <TableCell>
-                    <PositionBadge position={player.position} />
-                  </TableCell>
-                  <TableCell>{player.games}</TableCell>
-                  <TableCell>{avgMinutes}&apos;</TableCell>
-                  <TableCell className="font-bold">{player.points}</TableCell>
-                  <TableCell>{player.t2Made}</TableCell>
-                  <TableCell>{player.t3Made}</TableCell>
-                  <TableCell>{player.ftMade}/{player.ftAttempted} ({ftPct}%)</TableCell>
-                  <TableCell>{player.fouls}</TableCell>
-                  <TableCell className={cn(
-                    "font-bold",
-                    player.plusMinus > 0 && "text-vice-blue",
-                    player.plusMinus < 0 && "text-vice-pink"
-                  )}>
-                    {player.plusMinus > 0 ? '+' : ''}{player.plusMinus}
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
+        <div className="overflow-x-auto">
+          <Table aria-label="Estadísticas de jugadores" className="bg-vice-dark border border-vice-pink/30 rounded-lg overflow-hidden table-fixed">
+            <TableHeader>
+              <TableRow className="border-none hover:bg-transparent bg-vice-pink/10">
+                <TableHead className="sticky left-0 z-20 w-24 md:w-36 bg-[#1a0a12] text-vice-pink font-bebas tracking-wider text-sm">Jugador</TableHead>
+                <TableHead className="hidden sm:table-cell w-14 text-white/80 text-xs">Pos</TableHead>
+                <TableHead className="w-10 text-white/80 text-xs">
+                  <SortButton field="games" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>PJ</SortButton>
+                </TableHead>
+                <TableHead className="hidden md:table-cell w-10 text-white/80 text-xs">
+                  <SortButton field="totalMinutes" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>MIN</SortButton>
+                </TableHead>
+                <TableHead className="w-10 text-white/80 text-xs">
+                  <SortButton field="points" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>PTS</SortButton>
+                </TableHead>
+                <TableHead className="hidden sm:table-cell w-10 text-white/80 text-xs">
+                  <SortButton field="t2Made" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>T2</SortButton>
+                </TableHead>
+                <TableHead className="hidden sm:table-cell w-10 text-white/80 text-xs">
+                  <SortButton field="t3Made" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>T3</SortButton>
+                </TableHead>
+                <TableHead className="hidden md:table-cell w-16 text-white/80 text-xs">
+                  <SortButton field="ftMade" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>TL</SortButton>
+                </TableHead>
+                <TableHead className="hidden md:table-cell w-14 text-white/80 text-xs">
+                  <SortButton field="fouls" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>Faltas</SortButton>
+                </TableHead>
+                <TableHead className="w-10 text-white/80 text-xs">
+                  <SortButton field="plusMinus" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>+/-</SortButton>
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {sortedPlayers.map((player) => {
+                const avgMin = player.games > 0 ? (player.totalMinutes / player.games).toFixed(1) : '0.0';
+                const ftPct = player.ftAttempted > 0 ? Math.round((player.ftMade / player.ftAttempted) * 100) : 0;
+                return (
+                  <TableRow key={player.id} className="border-l-2 border-l-transparent hover:border-l-vice-pink hover:bg-vice-pink/5 transition-colors odd:bg-[#0d0d0d] even:bg-vice-dark">
+                    <TableCell className="sticky left-0 z-10 w-24 md:w-36 bg-inherit py-2">
+                      <Link
+                        href={`/jugador/${player.id}`}
+                        className="text-vice-blue font-semibold hover:text-vice-pink transition-colors"
+                      >
+                        {player.nickname} <span className="text-vice-pink/70 font-normal">#{player.number}</span>
+                      </Link>
+                    </TableCell>
+                    <TableCell className="hidden sm:table-cell py-2">
+                      <PositionBadge position={player.position} />
+                    </TableCell>
+                    <TableCell className="py-2 text-white/70">{player.games}</TableCell>
+                    <TableCell className="hidden md:table-cell py-2 text-white/70">{avgMin}&apos;</TableCell>
+                    <TableCell className="py-2 font-bold text-white">{player.points}</TableCell>
+                    <TableCell className="hidden sm:table-cell py-2 text-white/70">{player.t2Made}</TableCell>
+                    <TableCell className="hidden sm:table-cell py-2 text-white/70">{player.t3Made}</TableCell>
+                    <TableCell className="hidden md:table-cell py-2 text-white/70">{player.ftMade}/{player.ftAttempted} ({ftPct}%)</TableCell>
+                    <TableCell className="hidden md:table-cell py-2 text-white/70">{player.fouls}</TableCell>
+                    <TableCell className={cn(
+                      "py-2 font-bold",
+                      player.plusMinus > 0 ? "text-vice-blue" : player.plusMinus < 0 ? "text-vice-pink" : "text-white/80"
+                    )}>
+                      {player.plusMinus > 0 ? '+' : ''}{player.plusMinus}
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </div>
   );
