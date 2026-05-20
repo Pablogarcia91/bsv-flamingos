@@ -471,5 +471,40 @@ export const matches: Match[] = [
       { playerId: 46, minutes: "22:11", points: 2,  t2Made: 1, t3Made: 0, ftMade: 0,  ftAttempted: 0,  fouls: 1, plusMinus: 0  },
       { playerId: 66, minutes: "19:38", points: 2,  t2Made: 1, t3Made: 0, ftMade: 0,  ftAttempted: 2,  fouls: 1, plusMinus: 9  }
     ]
+  },
+  {
+    id: 23,
+    date: "2026-05-16",
+    opponent: "María Inmaculada",
+    home: true,
+    ourScore: 44,
+    oppScore: 92,
+    stats: [
+      { playerId: 6,  minutes: "27:41", points: 0,  t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: -34 },
+      { playerId: 10, minutes: "30:19", points: 12, t2Made: 6, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 4, plusMinus: -44 },
+      { playerId: 21, minutes: "25:13", points: 0,  t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 2, fouls: 3, plusMinus: -33 },
+      { playerId: 31, minutes: "21:27", points: 0,  t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: -28 },
+      { playerId: 44, minutes: "34:46", points: 23, t2Made: 6, t3Made: 2, ftMade: 5, ftAttempted: 9, fouls: 0, plusMinus: -41 },
+      { playerId: 46, minutes: "28:21", points: 6,  t2Made: 0, t3Made: 2, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -32 },
+      { playerId: 66, minutes: "32:13", points: 3,  t2Made: 1, t3Made: 0, ftMade: 1, ftAttempted: 4, fouls: 3, plusMinus: -28 }
+    ]
+  },
+  {
+    id: 24,
+    date: "2026-05-20",
+    opponent: "Sanfrantoko9ers",
+    home: true,
+    ourScore: 72,
+    oppScore: 65,
+    stats: [
+      { playerId: 4,  minutes: "27:56", points: 10, t2Made: 3, t3Made: 0, ftMade: 4, ftAttempted: 7, fouls: 1, plusMinus: 8   },
+      { playerId: 6,  minutes: "27:39", points: 2,  t2Made: 0, t3Made: 0, ftMade: 2, ftAttempted: 2, fouls: 3, plusMinus: 20  },
+      { playerId: 7,  minutes: "30:06", points: 12, t2Made: 2, t3Made: 2, ftMade: 2, ftAttempted: 2, fouls: 1, plusMinus: -7  },
+      { playerId: 9,  minutes: "13:34", points: 2,  t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: 5   },
+      { playerId: 10, minutes: "31:00", points: 10, t2Made: 4, t3Made: 0, ftMade: 2, ftAttempted: 2, fouls: 0, plusMinus: -2  },
+      { playerId: 19, minutes: "14:56", points: 2,  t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 2, fouls: 1, plusMinus: -12 },
+      { playerId: 31, minutes: "18:20", points: 3,  t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 7   },
+      { playerId: 44, minutes: "36:29", points: 31, t2Made: 2, t3Made: 8, ftMade: 3, ftAttempted: 3, fouls: 1, plusMinus: 16  }
+    ]
   }
 ];
