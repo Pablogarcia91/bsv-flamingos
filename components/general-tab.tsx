@@ -157,6 +157,34 @@ export function GeneralTab({ players, matches }: GeneralTabProps) {
         </div>
       </div>
 
+      {/* ── PRÓXIMOS PARTIDOS ── */}
+      <div className="bg-vice-dark border border-vice-pink/25 rounded-xl overflow-hidden">
+        <div className="px-5 pt-3 pb-2 border-b border-vice-pink/15">
+          <span className="text-[10px] text-white/75 uppercase tracking-widest">Próximos partidos</span>
+        </div>
+        <div className="divide-y divide-vice-pink/10">
+          {[
+            { opponent: "Dfincas Alfara", date: "Jue 28 May", time: "20:45h", home: true },
+            { opponent: "Xuloplastika", date: "Dom 31 May", time: "17:00h", home: true },
+          ].map((fixture) => (
+            <div key={fixture.opponent} className="flex items-center justify-between px-4 md:px-5 py-3 gap-4">
+              <div className="flex items-center gap-2 md:gap-3 min-w-0">
+                <span className="text-[10px] text-white/60 uppercase tracking-widest border border-white/15 rounded px-1.5 py-0.5 shrink-0">
+                  {fixture.home ? "LOCAL" : "VIS"}
+                </span>
+                <span className="font-bebas text-lg md:text-xl text-white tracking-wide truncate">
+                  BSV vs {fixture.opponent}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 shrink-0 text-right">
+                <span className="text-sm text-white/75 whitespace-nowrap">{fixture.date}</span>
+                <span className="font-bebas text-lg text-vice-pink leading-none">{fixture.time}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* ── TABLA: filtros + columnas ── */}
       <div>
         {/* Filtros de posición */}
@@ -200,7 +228,7 @@ export function GeneralTab({ players, matches }: GeneralTabProps) {
                 <TableHead className="text-white/80 text-xs w-10">
                   <SortButton field="t3Made" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>T3</SortButton>
                 </TableHead>
-                <TableHead className="text-white/80 text-xs w-16">
+                <TableHead className="text-white/80 text-xs w-28 whitespace-nowrap">
                   <SortButton field="ftMade" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>TL</SortButton>
                 </TableHead>
                 <TableHead className="text-white/80 text-xs w-12">
@@ -233,7 +261,7 @@ export function GeneralTab({ players, matches }: GeneralTabProps) {
                     <TableCell className="py-2 font-bold text-white">{player.points}</TableCell>
                     <TableCell className="py-2 text-white/70">{player.t2Made}</TableCell>
                     <TableCell className="py-2 text-white/70">{player.t3Made}</TableCell>
-                    <TableCell className="py-2 text-white/70">{player.ftMade}/{player.ftAttempted} ({ftPct}%)</TableCell>
+                    <TableCell className="py-2 text-white/70 whitespace-nowrap">{player.ftMade}/{player.ftAttempted} ({ftPct}%)</TableCell>
                     <TableCell className="py-2 text-white/70">{player.fouls}</TableCell>
                     <TableCell className={cn(
                       "py-2 font-bold",
