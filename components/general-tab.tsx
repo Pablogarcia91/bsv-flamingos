@@ -164,8 +164,8 @@ export function GeneralTab({ players, matches }: GeneralTabProps) {
         </div>
         <div className="divide-y divide-vice-pink/10">
           {[
-            { opponent: "Dfincas Alfara", date: "Jue 28 May", time: "20:45h", home: true },
-            { opponent: "Xuloplastika", date: "Dom 31 May", time: "17:00h", home: true },
+            { opponent: "Dfincas Alfara", date: "Jue 28 May", time: "20:45h", home: false },
+            { opponent: "Xuloplastika", date: "Dom 31 May", time: "17:00h", home: false },
           ].map((fixture) => (
             <div key={fixture.opponent} className="flex items-center justify-between px-4 md:px-5 py-3 gap-4">
               <div className="flex items-center gap-2 md:gap-3 min-w-0">
