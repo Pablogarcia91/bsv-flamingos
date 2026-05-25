@@ -61,14 +61,14 @@ export function MatchDetail({ match, players }: MatchDetailProps) {
           <Table aria-label="Estadísticas del partido" className="bg-vice-dark border-2 border-vice-pink rounded-lg overflow-hidden">
             <TableHeader>
               <TableRow className="border-none hover:bg-transparent">
-                <TableHead className="sticky left-0 z-20 w-24 md:w-36 bg-gradient-to-r from-vice-pink to-vice-pink/80 text-white font-bebas tracking-wider">Jugador</TableHead>
-                <TableHead className="hidden sm:table-cell">Pos</TableHead>
-                <TableHead className="hidden md:table-cell">MIN</TableHead>
+                <TableHead className="sticky left-0 z-20 w-28 bg-gradient-to-r from-vice-pink to-vice-pink/80 text-white font-bebas tracking-wider">Jugador</TableHead>
+                <TableHead>Pos</TableHead>
+                <TableHead>MIN</TableHead>
                 <TableHead>PTS</TableHead>
-                <TableHead className="hidden sm:table-cell">T2</TableHead>
-                <TableHead className="hidden sm:table-cell">T3</TableHead>
-                <TableHead className="hidden md:table-cell">TL</TableHead>
-                <TableHead className="hidden md:table-cell">Faltas</TableHead>
+                <TableHead>T2</TableHead>
+                <TableHead>T3</TableHead>
+                <TableHead>TL</TableHead>
+                <TableHead>Faltas</TableHead>
                 <TableHead>+/-</TableHead>
               </TableRow>
             </TableHeader>
@@ -81,7 +81,7 @@ export function MatchDetail({ match, players }: MatchDetailProps) {
 
                   return (
                     <TableRow key={stat.playerId} className="border-l-2 border-l-transparent hover:border-l-vice-pink hover:bg-vice-pink/5 transition-colors odd:bg-[#0d0d0d] even:bg-vice-dark">
-                      <TableCell className="sticky left-0 z-10 w-24 md:w-36 bg-vice-dark">
+                      <TableCell className="sticky left-0 z-10 w-28 bg-vice-dark">
                         <Link
                           href={`/jugador/${player.id}`}
                           className="text-vice-blue font-bold hover:text-vice-pink transition-all hover:translate-x-1 inline-block"
@@ -89,15 +89,15 @@ export function MatchDetail({ match, players }: MatchDetailProps) {
                           {player.nickname}
                         </Link>
                       </TableCell>
-                      <TableCell className="hidden sm:table-cell">
+                      <TableCell>
                         <PositionBadge position={player.position} />
                       </TableCell>
-                      <TableCell className="hidden md:table-cell">{stat.minutes}</TableCell>
+                      <TableCell>{stat.minutes}</TableCell>
                       <TableCell className="font-bold">{stat.points}</TableCell>
-                      <TableCell className="hidden sm:table-cell">{stat.t2Made}</TableCell>
-                      <TableCell className="hidden sm:table-cell">{stat.t3Made}</TableCell>
-                      <TableCell className="hidden md:table-cell">{stat.ftMade}/{stat.ftAttempted}</TableCell>
-                      <TableCell className="hidden md:table-cell">{stat.fouls}</TableCell>
+                      <TableCell>{stat.t2Made}</TableCell>
+                      <TableCell>{stat.t3Made}</TableCell>
+                      <TableCell>{stat.ftMade}/{stat.ftAttempted}</TableCell>
+                      <TableCell>{stat.fouls}</TableCell>
                       <TableCell className={cn(
                         "font-bold",
                         stat.plusMinus > 0 && "text-vice-blue",

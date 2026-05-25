@@ -78,24 +78,24 @@ export function MatchesTab({ matches }: MatchesTabProps) {
       <Table aria-label="Partidos de la temporada" className="bg-vice-dark border-2 border-vice-pink rounded-lg overflow-hidden">
         <TableHeader>
           <TableRow className="border-none hover:bg-transparent">
-            <TableHead className="sticky left-0 z-20 w-24 md:w-36 bg-gradient-to-r from-vice-pink to-vice-pink/80 text-white font-bebas tracking-wider">
+            <TableHead className="sticky left-0 z-20 w-24 bg-gradient-to-r from-vice-pink to-vice-pink/80 text-white font-bebas tracking-wider">
               <SortButton field="date" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>Fecha</SortButton>
             </TableHead>
             <TableHead>Rival</TableHead>
-            <TableHead className="hidden sm:table-cell">L/V</TableHead>
+            <TableHead>L/V</TableHead>
             <TableHead>
               <SortButton field="ourScore" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>Res.</SortButton>
             </TableHead>
-            <TableHead className="hidden sm:table-cell">
+            <TableHead>
               <SortButton field="t2Made" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>T2</SortButton>
             </TableHead>
-            <TableHead className="hidden sm:table-cell">
+            <TableHead>
               <SortButton field="t3Made" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>T3</SortButton>
             </TableHead>
-            <TableHead className="hidden md:table-cell">
+            <TableHead>
               <SortButton field="ftMade" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>TL</SortButton>
             </TableHead>
-            <TableHead className="hidden md:table-cell">
+            <TableHead>
               <SortButton field="fouls" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>Faltas</SortButton>
             </TableHead>
             <TableHead>V/D</TableHead>
@@ -110,21 +110,21 @@ export function MatchesTab({ matches }: MatchesTabProps) {
 
             return (
               <TableRow key={game.id} className="border-l-2 border-l-transparent hover:border-l-vice-pink hover:bg-vice-pink/5 transition-colors odd:bg-[#0d0d0d] even:bg-vice-dark">
-                <TableCell className="sticky left-0 z-10 w-24 md:w-36 bg-vice-dark">
+                <TableCell className="sticky left-0 z-10 w-24 bg-vice-dark whitespace-nowrap">
                   {new Date(game.date).toLocaleDateString('es-ES')}
                 </TableCell>
-                <TableCell className="font-bold truncate max-w-[100px] md:max-w-none">{game.opponent}</TableCell>
-                <TableCell className="hidden sm:table-cell">{game.home ? 'LOCAL' : 'VIS'}</TableCell>
-                <TableCell className="font-bold">{displayScore}</TableCell>
+                <TableCell className="font-bold whitespace-nowrap">{game.opponent}</TableCell>
+                <TableCell className="whitespace-nowrap">{game.home ? 'LOCAL' : 'VIS'}</TableCell>
+                <TableCell className="font-bold whitespace-nowrap">{displayScore}</TableCell>
                 {game.hasData ? (
                   <>
-                    <TableCell className="hidden sm:table-cell">{game.t2Made}</TableCell>
-                    <TableCell className="hidden sm:table-cell">{game.t3Made}</TableCell>
-                    <TableCell className="hidden md:table-cell">{game.ftMade}/{game.ftAttempted}</TableCell>
-                    <TableCell className="hidden md:table-cell">{game.fouls}</TableCell>
+                    <TableCell>{game.t2Made}</TableCell>
+                    <TableCell>{game.t3Made}</TableCell>
+                    <TableCell className="whitespace-nowrap">{game.ftMade}/{game.ftAttempted}</TableCell>
+                    <TableCell>{game.fouls}</TableCell>
                   </>
                 ) : (
-                  <TableCell colSpan={4} className="hidden sm:table-cell text-center italic text-vice-blue">
+                  <TableCell colSpan={4} className="text-center italic text-vice-blue whitespace-nowrap">
                     <span aria-hidden="true">⏳</span> Procesando...
                   </TableCell>
                 )}
@@ -136,7 +136,7 @@ export function MatchesTab({ matches }: MatchesTabProps) {
                 <TableCell>
                   {game.hasData && (
                     <Link href={`/partido/${game.id}`} className={cn(buttonVariants({ variant: "outline", size: "sm" }), "text-xs whitespace-nowrap")}>
-                      <span className="hidden sm:inline">Ver </span>Stats
+                      Stats
                     </Link>
                   )}
                 </TableCell>

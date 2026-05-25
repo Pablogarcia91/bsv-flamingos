@@ -10,7 +10,7 @@ export const players: Player[] = [
   { id: 10, name: "Jose Fernando Rodriguez Guerra", nickname: "Jose", number: 10, position: "Pívot" },
   { id: 11, name: "Ricardo César Juanicotena", nickname: "Riky", number: 11, position: "Base" },
   { id: 15, name: "Jose Vicente González Cabrera", nickname: "Sevi", number: 15, position: "Alero" },
-  { id: 19, name: "Pablo Garcia Pedro", nickname: "Pablo Rodillas", number: 19, position: "Pívot" },
+  { id: 19, name: "Pablo Garcia Pedro", nickname: "Pablo", number: 19, position: "Pívot" },
   { id: 21, name: "Hernán Martín D'Amelio Acuña", nickname: "Martín", number: 21, position: "Alero" },
   { id: 24, name: "Nicolas Arias", nickname: "Nico", number: 24, position: "Alero" },
   { id: 27, name: "Claudio Castellazzi", nickname: "Claudio", number: 27, position: "Base" },

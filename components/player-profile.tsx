@@ -18,11 +18,11 @@ interface PlayerProfileProps {
 
 function StatCircle({ value, label }: { value: string; label: string }) {
   return (
-    <div className="flex flex-col items-center gap-1.5">
-      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-vice-pink/50 flex items-center justify-center bg-vice-dark">
-        <span className="font-bebas text-lg md:text-2xl text-white leading-none">{value}</span>
+    <div className="flex flex-col items-center gap-1 flex-1">
+      <div className="w-full aspect-square max-w-[56px] md:max-w-[80px] rounded-full border-2 border-vice-pink/50 flex items-center justify-center bg-vice-dark">
+        <span className="font-bebas text-base md:text-2xl text-white leading-none">{value}</span>
       </div>
-      <span className="text-[9px] md:text-[10px] text-white/75 uppercase tracking-widest text-center">{label}</span>
+      <span className="text-[8px] md:text-[10px] text-white/75 uppercase tracking-widest text-center leading-tight">{label}</span>
     </div>
   );
 }
@@ -106,7 +106,7 @@ export function PlayerProfile({ playerId, players, matches }: PlayerProfileProps
       </Link>
 
       {/* ── HERO ── */}
-      <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 pb-6 mb-0 border-b border-white/10">
+      <div className="flex flex-row items-center gap-4 md:gap-8 pb-6 mb-0 border-b border-white/10">
         {/* Number */}
         <div className="font-bebas text-5xl md:text-8xl text-vice-pink leading-none shrink-0">
           #{player.number}
@@ -114,12 +114,12 @@ export function PlayerProfile({ playerId, players, matches }: PlayerProfileProps
 
         {/* Name + position */}
         <div className="flex-1 min-w-0">
-          <h1 className="font-bebas text-3xl md:text-5xl tracking-wider text-white leading-tight">
+          <h1 className="font-bebas text-2xl md:text-5xl tracking-wider text-white leading-tight truncate">
             {player.name}
           </h1>
-          <div className="flex items-center gap-3 mt-1">
+          <div className="flex flex-wrap items-center gap-2 mt-1">
             <PositionBadge position={player.position} />
-            <span className="text-white/75 text-sm">Temporada 2025-26</span>
+            <span className="text-white/60 text-xs">Temporada 2025-26</span>
           </div>
         </div>
       </div>
@@ -151,7 +151,7 @@ export function PlayerProfile({ playerId, players, matches }: PlayerProfileProps
         <div className="space-y-10">
 
           {/* Stat circles */}
-          <div className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-10">
+          <div className="flex flex-row justify-between gap-2 md:gap-6 w-full">
             <StatCircle value={ppg}        label="PPP" />
             <StatCircle value={minPg + "'"} label="Min/PJ" />
             <StatCircle value={plusMinusStr} label="+/-" />
@@ -221,16 +221,16 @@ export function PlayerProfile({ playerId, players, matches }: PlayerProfileProps
                 <Table aria-label="Partidos del jugador" className="bg-vice-dark border border-white/10 rounded-lg overflow-hidden text-sm">
                   <TableHeader>
                     <TableRow className="border-none hover:bg-transparent bg-white/5">
-                      <TableHead className="hidden sm:table-cell text-white/75 text-xs w-8 text-center">#</TableHead>
-                      <TableHead className="text-white/75 text-xs sticky left-0 w-24 md:w-36 bg-white/5">Rival</TableHead>
-                      <TableHead className="hidden sm:table-cell text-white/75 text-xs">Fecha</TableHead>
+                      <TableHead className="text-white/75 text-xs w-8 text-center">#</TableHead>
+                      <TableHead className="text-white/75 text-xs sticky left-0 w-28 bg-white/5">Rival</TableHead>
+                      <TableHead className="text-white/75 text-xs whitespace-nowrap">Fecha</TableHead>
                       <TableHead className="text-white/75 text-xs">Res.</TableHead>
-                      <TableHead className="hidden md:table-cell text-white/75 text-xs">MIN</TableHead>
+                      <TableHead className="text-white/75 text-xs">MIN</TableHead>
                       <TableHead className="text-white/75 text-xs">PTS</TableHead>
-                      <TableHead className="hidden sm:table-cell text-white/75 text-xs">T2</TableHead>
-                      <TableHead className="hidden sm:table-cell text-white/75 text-xs">T3</TableHead>
-                      <TableHead className="hidden md:table-cell text-white/75 text-xs">TL</TableHead>
-                      <TableHead className="hidden md:table-cell text-white/75 text-xs">FAL</TableHead>
+                      <TableHead className="text-white/75 text-xs">T2</TableHead>
+                      <TableHead className="text-white/75 text-xs">T3</TableHead>
+                      <TableHead className="text-white/75 text-xs">TL</TableHead>
+                      <TableHead className="text-white/75 text-xs">FAL</TableHead>
                       <TableHead className="text-white/75 text-xs">+/-</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -240,11 +240,11 @@ export function PlayerProfile({ playerId, players, matches }: PlayerProfileProps
                       const isWin = match.ourScore > match.oppScore;
                       return (
                         <TableRow key={match.id} className="border-l-2 border-l-transparent hover:border-l-vice-pink hover:bg-vice-pink/5 transition-colors odd:bg-[#0d0d0d] even:bg-vice-dark">
-                          <TableCell className="hidden sm:table-cell text-center text-white/40 text-xs py-2">{i + 1}</TableCell>
-                          <TableCell className="py-2 sticky left-0 w-24 md:w-36 bg-inherit font-semibold text-white truncate max-w-[96px] md:max-w-none">
+                          <TableCell className="text-center text-white/40 text-xs py-2">{i + 1}</TableCell>
+                          <TableCell className="py-2 sticky left-0 w-28 bg-inherit font-semibold text-white whitespace-nowrap">
                             {match.home ? "vs" : "@"} {match.opponent}
                           </TableCell>
-                          <TableCell className="hidden sm:table-cell py-2 text-white/75 whitespace-nowrap">
+                          <TableCell className="py-2 text-white/75 whitespace-nowrap">
                             {new Date(match.date).toLocaleDateString("es-ES", { day: "numeric", month: "short" })}
                           </TableCell>
                           <TableCell className="py-2">
@@ -252,12 +252,12 @@ export function PlayerProfile({ playerId, players, matches }: PlayerProfileProps
                               {match.ourScore}-{match.oppScore}
                             </span>
                           </TableCell>
-                          <TableCell className="hidden md:table-cell py-2 text-white/75">{s.minutes}'</TableCell>
+                          <TableCell className="py-2 text-white/75 whitespace-nowrap">{s.minutes}'</TableCell>
                           <TableCell className="py-2 font-bold text-white">{s.points}</TableCell>
-                          <TableCell className="hidden sm:table-cell py-2 text-white/75">{s.t2Made}</TableCell>
-                          <TableCell className="hidden sm:table-cell py-2 text-white/75">{s.t3Made}</TableCell>
-                          <TableCell className="hidden md:table-cell py-2 text-white/75">{s.ftMade}/{s.ftAttempted}</TableCell>
-                          <TableCell className="hidden md:table-cell py-2 text-white/75">{s.fouls}</TableCell>
+                          <TableCell className="py-2 text-white/75">{s.t2Made}</TableCell>
+                          <TableCell className="py-2 text-white/75">{s.t3Made}</TableCell>
+                          <TableCell className="py-2 text-white/75 whitespace-nowrap">{s.ftMade}/{s.ftAttempted}</TableCell>
+                          <TableCell className="py-2 text-white/75">{s.fouls}</TableCell>
                           <TableCell className={cn("py-2 font-bold",
                             s.plusMinus > 0 ? "text-vice-blue" : s.plusMinus < 0 ? "text-vice-pink" : "text-white/75"
                           )}>

@@ -180,33 +180,33 @@ export function GeneralTab({ players, matches }: GeneralTabProps) {
         </div>
 
         <div className="overflow-x-auto">
-          <Table aria-label="Estadísticas de jugadores" className="bg-vice-dark border border-vice-pink/30 rounded-lg overflow-hidden table-fixed">
+          <Table aria-label="Estadísticas de jugadores" className="bg-vice-dark border border-vice-pink/30 rounded-lg overflow-hidden">
             <TableHeader>
               <TableRow className="border-none hover:bg-transparent bg-vice-pink/10">
-                <TableHead className="sticky left-0 z-20 w-24 md:w-36 bg-[#1a0a12] text-vice-pink font-bebas tracking-wider text-sm">Jugador</TableHead>
-                <TableHead className="hidden sm:table-cell w-14 text-white/80 text-xs">Pos</TableHead>
-                <TableHead className="w-10 text-white/80 text-xs">
+                <TableHead className="sticky left-0 z-20 w-28 bg-[#1a0a12] text-vice-pink font-bebas tracking-wider text-sm">Jugador</TableHead>
+                <TableHead className="text-white/80 text-xs w-12">Pos</TableHead>
+                <TableHead className="text-white/80 text-xs w-10">
                   <SortButton field="games" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>PJ</SortButton>
                 </TableHead>
-                <TableHead className="hidden md:table-cell w-10 text-white/80 text-xs">
+                <TableHead className="text-white/80 text-xs w-12">
                   <SortButton field="totalMinutes" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>MIN</SortButton>
                 </TableHead>
-                <TableHead className="w-10 text-white/80 text-xs">
+                <TableHead className="text-white/80 text-xs w-10">
                   <SortButton field="points" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>PTS</SortButton>
                 </TableHead>
-                <TableHead className="hidden sm:table-cell w-10 text-white/80 text-xs">
+                <TableHead className="text-white/80 text-xs w-10">
                   <SortButton field="t2Made" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>T2</SortButton>
                 </TableHead>
-                <TableHead className="hidden sm:table-cell w-10 text-white/80 text-xs">
+                <TableHead className="text-white/80 text-xs w-10">
                   <SortButton field="t3Made" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>T3</SortButton>
                 </TableHead>
-                <TableHead className="hidden md:table-cell w-16 text-white/80 text-xs">
+                <TableHead className="text-white/80 text-xs w-16">
                   <SortButton field="ftMade" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>TL</SortButton>
                 </TableHead>
-                <TableHead className="hidden md:table-cell w-14 text-white/80 text-xs">
+                <TableHead className="text-white/80 text-xs w-12">
                   <SortButton field="fouls" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>Faltas</SortButton>
                 </TableHead>
-                <TableHead className="w-10 text-white/80 text-xs">
+                <TableHead className="text-white/80 text-xs w-10">
                   <SortButton field="plusMinus" sortField={sortField} sortDirection={sortDirection} onSort={handleSort}>+/-</SortButton>
                 </TableHead>
               </TableRow>
@@ -217,7 +217,7 @@ export function GeneralTab({ players, matches }: GeneralTabProps) {
                 const ftPct = player.ftAttempted > 0 ? Math.round((player.ftMade / player.ftAttempted) * 100) : 0;
                 return (
                   <TableRow key={player.id} className="border-l-2 border-l-transparent hover:border-l-vice-pink hover:bg-vice-pink/5 transition-colors odd:bg-[#0d0d0d] even:bg-vice-dark">
-                    <TableCell className="sticky left-0 z-10 w-24 md:w-36 bg-inherit py-2">
+                    <TableCell className="sticky left-0 z-10 w-28 bg-inherit py-2">
                       <Link
                         href={`/jugador/${player.id}`}
                         className="text-vice-blue font-semibold hover:text-vice-pink transition-colors"
@@ -225,16 +225,16 @@ export function GeneralTab({ players, matches }: GeneralTabProps) {
                         {player.nickname} <span className="text-vice-pink/70 font-normal">#{player.number}</span>
                       </Link>
                     </TableCell>
-                    <TableCell className="hidden sm:table-cell py-2">
+                    <TableCell className="py-2">
                       <PositionBadge position={player.position} />
                     </TableCell>
                     <TableCell className="py-2 text-white/70">{player.games}</TableCell>
-                    <TableCell className="hidden md:table-cell py-2 text-white/70">{avgMin}&apos;</TableCell>
+                    <TableCell className="py-2 text-white/70">{avgMin}&apos;</TableCell>
                     <TableCell className="py-2 font-bold text-white">{player.points}</TableCell>
-                    <TableCell className="hidden sm:table-cell py-2 text-white/70">{player.t2Made}</TableCell>
-                    <TableCell className="hidden sm:table-cell py-2 text-white/70">{player.t3Made}</TableCell>
-                    <TableCell className="hidden md:table-cell py-2 text-white/70">{player.ftMade}/{player.ftAttempted} ({ftPct}%)</TableCell>
-                    <TableCell className="hidden md:table-cell py-2 text-white/70">{player.fouls}</TableCell>
+                    <TableCell className="py-2 text-white/70">{player.t2Made}</TableCell>
+                    <TableCell className="py-2 text-white/70">{player.t3Made}</TableCell>
+                    <TableCell className="py-2 text-white/70">{player.ftMade}/{player.ftAttempted} ({ftPct}%)</TableCell>
+                    <TableCell className="py-2 text-white/70">{player.fouls}</TableCell>
                     <TableCell className={cn(
                       "py-2 font-bold",
                       player.plusMinus > 0 ? "text-vice-blue" : player.plusMinus < 0 ? "text-vice-pink" : "text-white/80"
