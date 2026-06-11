@@ -473,6 +473,47 @@ export const matches: Match[] = [
     ]
   },
   {
+    id: 25,
+    date: "2026-05-28",
+    opponent: "Dfincas Alfara 'A'",
+    home: false,
+    ourScore: 69,
+    oppScore: 24,
+    stats: [
+      { playerId: 4,  minutes: "15:29", points: 6,  t2Made: 3, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 18 },
+      { playerId: 6,  minutes: "18:11", points: 2,  t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: 26 },
+      { playerId: 7,  minutes: "20:00", points: 8,  t2Made: 4, t3Made: 0, ftMade: 0, ftAttempted: 1, fouls: 1, plusMinus: 29 },
+      { playerId: 9,  minutes: "15:51", points: 0,  t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: 11 },
+      { playerId: 10, minutes: "20:43", points: 12, t2Made: 6, t3Made: 0, ftMade: 0, ftAttempted: 3, fouls: 2, plusMinus: 19 },
+      { playerId: 11, minutes: "21:16", points: 2,  t2Made: 0, t3Made: 0, ftMade: 2, ftAttempted: 4, fouls: 0, plusMinus: 21 },
+      { playerId: 15, minutes: "16:53", points: 1,  t2Made: 0, t3Made: 0, ftMade: 1, ftAttempted: 4, fouls: 0, plusMinus: 21 },
+      { playerId: 19, minutes: "14:32", points: 4,  t2Made: 2, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 4, plusMinus: 19 },
+      { playerId: 21, minutes: "14:27", points: 8,  t2Made: 1, t3Made: 2, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: 8  },
+      { playerId: 44, minutes: "21:02", points: 24, t2Made: 9, t3Made: 1, ftMade: 3, ftAttempted: 4, fouls: 3, plusMinus: 32 },
+      { playerId: 66, minutes: "21:36", points: 2,  t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 4, fouls: 4, plusMinus: 21 }
+    ]
+  },
+  {
+    id: 26,
+    date: "2026-05-31",
+    opponent: "Xuloplastika",
+    home: false,
+    ourScore: 45,
+    oppScore: 71,
+    stats: [
+      { playerId: 4,  minutes: "20:20", points: 8,  t2Made: 3, t3Made: 0, ftMade: 2, ftAttempted: 2, fouls: 0, plusMinus: -19 },
+      { playerId: 5,  minutes: "22:35", points: 5,  t2Made: 1, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -13 },
+      { playerId: 6,  minutes: "00:04", points: 0,  t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 0   },
+      { playerId: 7,  minutes: "21:17", points: 5,  t2Made: 2, t3Made: 0, ftMade: 1, ftAttempted: 3, fouls: 1, plusMinus: -15 },
+      { playerId: 9,  minutes: "27:36", points: 5,  t2Made: 1, t3Made: 1, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: -7  },
+      { playerId: 10, minutes: "34:01", points: 12, t2Made: 6, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: -23 },
+      { playerId: 15, minutes: "08:38", points: 2,  t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: -13 },
+      { playerId: 21, minutes: "17:10", points: 6,  t2Made: 0, t3Made: 2, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -13 },
+      { playerId: 31, minutes: "23:27", points: 0,  t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -18 },
+      { playerId: 66, minutes: "24:52", points: 2,  t2Made: 0, t3Made: 0, ftMade: 2, ftAttempted: 2, fouls: 2, plusMinus: -9  }
+    ]
+  },
+  {
     id: 23,
     date: "2026-05-16",
     opponent: "María Inmaculada",
