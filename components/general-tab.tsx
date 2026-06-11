@@ -92,8 +92,8 @@ export function GeneralTab({ players, matches }: GeneralTabProps) {
   return (
     <div className="animate-neon-fade-in space-y-6">
 
-      {/* ── TOP ROW: dos cards separadas ── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* ── TOP ROW: tres cards ── */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
         {/* Último partido */}
         {lastMatch ? (
@@ -131,10 +131,23 @@ export function GeneralTab({ players, matches }: GeneralTabProps) {
           </div>
         )}
 
+        {/* Posición */}
+        <div className="bg-vice-dark border border-vice-pink/25 rounded-xl flex flex-col overflow-hidden">
+          <div className="px-5 pt-3 pb-2 border-b border-vice-pink/15">
+            <span className="text-[10px] text-white/75 uppercase tracking-widest">Clasificación</span>
+          </div>
+          <div className="flex-1 flex items-center justify-center py-4">
+            <div className="text-center">
+              <div className="font-bebas text-4xl md:text-5xl text-vice-pink leading-none">7º</div>
+              <div className="text-[10px] text-white/75 uppercase tracking-widest mt-1">Posición final</div>
+            </div>
+          </div>
+        </div>
+
         {/* Récords del equipo */}
         <div className="bg-vice-dark border border-vice-pink/25 rounded-xl flex flex-col overflow-hidden">
           <div className="px-5 pt-3 pb-2 border-b border-vice-pink/15">
-            <span className="text-[10px] text-white/75 uppercase tracking-widest">Récord del equipo</span>
+            <span className="text-[10px] text-white/75 uppercase tracking-widest">Récord del equipo Temp 25-26</span>
           </div>
           <div className="grid grid-cols-4 divide-x divide-vice-pink/15 flex-1">
             <div className="px-1 md:px-3 py-3 text-center flex flex-col justify-center">
