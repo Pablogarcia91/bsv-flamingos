@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { currentSeason, seasons } from "@/lib/data";
-import { Container, SampleTag } from "@/components/site/ui";
+import { Container, PageHero, SampleTag } from "@/components/site/ui";
 import { RosterGrid } from "@/components/roster/roster-grid";
 
 export const metadata: Metadata = { title: "Plantilla" };
@@ -11,28 +11,20 @@ export default function PlantillaPage() {
 
   return (
     <>
-      <section className="hero-glow border-b border-line">
-        <Container className="py-14 md:py-20">
-          <div className="flex flex-wrap items-center gap-2 mb-4">
-            <span className="eyebrow">Plantilla {currentSeason.label}</span>
-            {currentSeason.sample && <SampleTag />}
-          </div>
-          <h1 className="display text-7xl md:text-[10rem] max-w-5xl">
-            {currentSeason.roster.length} flamencos.<br />
-            <span className="text-vice-pink">Una misma bandada.</span>
-          </h1>
-          <p className="mt-6 text-xl text-white/70 max-w-2xl text-pretty">
-            Los jugadores de la temporada {currentSeason.label}. Pulsa en cualquiera para ver su ficha y sus números.
-          </p>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow={<>
+          <span className="eyebrow">{currentSeason.roster.length} jugadores</span>
+          {currentSeason.sample && <SampleTag />}
+        </>}
+        title={<>Plantilla <span className="text-vice-pink">{currentSeason.label}</span></>}
+      />
 
-      <Container className="py-14 md:py-20 space-y-12">
+      <Container className="py-8 md:py-14 space-y-8">
         <RosterGrid season={currentSeason} />
 
         {past.length > 0 && (
           <div className="flex flex-wrap items-center gap-3 pt-4">
-            <span className="text-white/55">Plantillas anteriores:</span>
+            <span className="text-sm text-white/55">Plantillas anteriores:</span>
             {past.map(s => (
               <Link
                 key={s.id}

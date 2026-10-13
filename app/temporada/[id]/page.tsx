@@ -3,7 +3,7 @@ import { getSeason, getSeasonPlayers } from "@/lib/data";
 import { calculatePlayerTotals } from "@/lib/stats";
 import { Leaders } from "@/components/season/leaders";
 import { StandingsTable } from "@/components/season/standings-table";
-import { FixtureCard, ResultCard } from "@/components/season/match-cards";
+import { MatchesBlock, ResultCard, ResultRowCompact } from "@/components/season/match-cards";
 import { EmptyState, SectionHeading, TextLink } from "@/components/site/ui";
 
 export default async function SeasonOverview({ params }: { params: Promise<{ id: string }> }) {
@@ -15,23 +15,20 @@ export default async function SeasonOverview({ params }: { params: Promise<{ id:
   const recent = [...season.matches].reverse().slice(0, 3);
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-10 md:space-y-20">
       {season.fixtures.length > 0 && (
         <section>
-          <SectionHeading eyebrow="Calendario" title="Próximos partidos" action={<TextLink href={`/temporada/${id}/partidos`}>Calendario completo</TextLink>} />
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-            {season.fixtures.slice(0, 4).map((f, i) => <FixtureCard key={f.date} fixture={f} index={i} />)}
-          </div>
+          <SectionHeading title="Próximos partidos" action={<TextLink href={`/temporada/${id}/partidos`}>Calendario</TextLink>} />
+          <MatchesBlock fixtures={season.fixtures} />
         </section>
       )}
 
       <section>
         <SectionHeading
-          eyebrow="Líderes"
-          title="Quién manda este año"
-          action={<TextLink href={`/temporada/${id}/estadisticas`}>Todas las estadísticas</TextLink>}
+          title="Líderes"
+          action={<TextLink href={`/temporada/${id}/estadisticas`}>Estadísticas</TextLink>}
         />
-        {season.matches.length ? <Leaders totals={totals} /> : <EmptyState>Los líderes aparecerán tras el primer partido.</EmptyState>}
+        {season.matches.length ? <Leaders totals={totals} seasonId={season.id} /> : <EmptyState>Los líderes aparecerán tras el primer partido.</EmptyState>}
       </section>
 
       {season.standings && (
@@ -39,18 +36,23 @@ export default async function SeasonOverview({ params }: { params: Promise<{ id:
           <SectionHeading
             eyebrow={season.standings.division}
             title="Clasificación"
-            action={<TextLink href={`/temporada/${id}/clasificacion`}>Tabla completa</TextLink>}
+            action={<TextLink href={`/temporada/${id}/clasificacion`}>Completa</TextLink>}
           />
           <StandingsTable standings={season.standings} compact />
         </section>
       )}
 
       <section>
-        <SectionHeading eyebrow="Resultados" title="Últimos partidos" action={<TextLink href={`/temporada/${id}/partidos`}>Ver todos</TextLink>} />
+        <SectionHeading title="Resultados" action={<TextLink href={`/temporada/${id}/partidos`}>Todos</TextLink>} />
         {recent.length ? (
-          <div className="grid md:grid-cols-3 gap-3 md:gap-4">
-            {recent.map(m => <ResultCard key={m.id} match={m} />)}
-          </div>
+          <>
+            <div className="sm:hidden card !rounded-3xl divide-y divide-line overflow-hidden">
+              {recent.map(m => <ResultRowCompact key={m.id} match={m} />)}
+            </div>
+            <div className="hidden sm:grid md:grid-cols-3 gap-3 md:gap-4">
+              {recent.map(m => <ResultCard key={m.id} match={m} />)}
+            </div>
+          </>
         ) : (
           <EmptyState>Todavía no se ha disputado ningún partido esta temporada.</EmptyState>
         )}

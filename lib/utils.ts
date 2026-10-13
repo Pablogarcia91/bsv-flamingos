@@ -5,6 +5,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+/** Enlace a la ficha de un jugador abierta en una temporada concreta. */
+export const playerHref = (id: number, seasonId?: string) => `/jugador/${id}${seasonId ? `#t-${seasonId}` : ""}`;
+
 /** Dorsal para mostrar: «—» si aún no está asignado. */
 export const dorsal = (n: number | null | undefined) => (n == null ? "—" : String(n));
 

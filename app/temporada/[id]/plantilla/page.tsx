@@ -12,7 +12,7 @@ export default async function SeasonRoster({ params }: { params: Promise<{ id: s
 
   return (
     <section>
-      <SectionHeading eyebrow={`${players.length} jugadores`} title={`Plantilla ${season.label}`} />
+      <SectionHeading eyebrow={`${players.length} jugadores`} title="Plantilla" />
       <RosterGrid season={season} />
     </section>
   );

@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowDown, ArrowUp } from "lucide-react";
 import type { PlayerTotals } from "@/lib/types";
-import { cn, dorsal } from "@/lib/utils";
+import { cn, dorsal, playerHref } from "@/lib/utils";
 import { PositionTag } from "@/components/site/ui";
 
 type Row = PlayerTotals;
@@ -36,7 +36,7 @@ function columns(mode: Mode): Col[] {
 
 const POSITIONS = ["Todos", "Base", "Alero", "Pívot"] as const;
 
-export function StatsTable({ rows }: { rows: Row[] }) {
+export function StatsTable({ rows, seasonId }: { rows: Row[]; seasonId?: string }) {
   const [mode, setMode] = useState<Mode>("avg");
   const [sort, setSort] = useState<{ key: string; dir: "asc" | "desc" }>({ key: "pts", dir: "desc" });
   const [pos, setPos] = useState<(typeof POSITIONS)[number]>("Todos");
@@ -129,7 +129,7 @@ export function StatsTable({ rows }: { rows: Row[] }) {
                 <th scope="row" className="sticky left-0 z-10 bg-panel group-hover:bg-[#19191c] px-5 py-3 text-left font-normal">
                   <div className="flex items-center gap-3">
                     <span className="w-5 text-sm text-white/35 tabular-nums">{i + 1}</span>
-                    <Link href={`/jugador/${p.id}`} className="font-bold hover:text-vice-pink transition-colors whitespace-nowrap">
+                    <Link href={playerHref(p.id, seasonId)} className="font-bold hover:text-vice-pink transition-colors whitespace-nowrap">
                       {p.nickname} <span className="text-vice-pink/80 font-semibold">#{dorsal(p.number)}</span>
                     </Link>
                     <PositionTag position={p.position} className="hidden md:inline-flex" />

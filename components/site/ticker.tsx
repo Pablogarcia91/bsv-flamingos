@@ -10,7 +10,7 @@ export function Ticker() {
 
   return (
     <div className="bg-black text-[13px] border-b border-line">
-      <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8 h-9 flex items-center gap-5 overflow-x-auto whitespace-nowrap">
+      <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8 h-9 flex items-center gap-5 overflow-x-auto whitespace-nowrap no-scrollbar">
         {last && (
           <Link href={`/partido/${last.id}`} className="inline-flex items-center gap-2 text-white/70 hover:text-white">
             <span className="font-bold uppercase tracking-wider text-white/40">Último</span>

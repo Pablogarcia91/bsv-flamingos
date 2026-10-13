@@ -14,11 +14,10 @@ export default async function SeasonStats({ params }: { params: Promise<{ id: st
   return (
     <section>
       <SectionHeading
-        eyebrow="Estadísticas"
-        title="Jugador a jugador"
-        description="Pulsa en una columna para ordenar. Pulsa en un jugador para ver su ficha."
+        title="Estadísticas"
+        description="Ordena por columna o pulsa un jugador para ver su ficha."
       />
-      <StatsTable rows={rows} />
+      <StatsTable rows={rows} seasonId={season.id} />
     </section>
   );
 }

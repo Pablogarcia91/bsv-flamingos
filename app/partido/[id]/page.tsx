@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllMatches, getMatch, getSeasonPlayers } from "@/lib/data";
 import { fmtDate } from "@/lib/stats";
-import { cn, dorsal } from "@/lib/utils";
+import { cn, dorsal, playerHref } from "@/lib/utils";
 import { Container, PositionTag, SampleTag, SectionHeading } from "@/components/site/ui";
 
 export function generateStaticParams() {
@@ -39,55 +39,55 @@ export default async function MatchPage({ params }: { params: Promise<{ id: stri
   return (
     <>
       <section className={cn("border-b border-line", win ? "bg-vice-blue text-ink" : "bg-vice-pink text-white")}>
-        <Container className="py-10 md:py-16">
+        <Container className="py-6 md:py-16">
           <div className="flex flex-wrap items-center gap-2 text-sm font-bold">
             <Link href={`/temporada/${season.id}/partidos`} className="opacity-70 hover:opacity-100">← Temporada {season.label}</Link>
             {season.sample && <SampleTag className="bg-black/20 text-current" />}
           </div>
-          <p className="mt-6 text-sm font-bold uppercase tracking-[0.16em] opacity-75">
+          <p className="mt-3 md:mt-6 text-[11px] md:text-sm font-bold uppercase tracking-[0.14em] opacity-75">
             {fmtDate(match.date, { weekday: "long", day: "numeric", month: "long", year: "numeric" })} · {match.home ? "Local" : "Visitante"}
           </p>
-          <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-end gap-4 md:gap-10">
+          <div className="mt-3 md:mt-4 grid grid-cols-[1fr_auto_1fr] items-end gap-3 md:gap-10">
             <div>
-              <div className="display text-3xl md:text-5xl">BSV Flamingos</div>
-              <div className="font-bebas text-[6rem] md:text-[11rem] leading-[0.8]">{match.ourScore}</div>
+              <div className="display text-xl md:text-5xl">BSV Flamingos</div>
+              <div className="font-bebas text-[4.25rem] md:text-[10rem] leading-[0.8]">{match.ourScore}</div>
             </div>
-            <div className="display text-5xl md:text-7xl opacity-50 pb-4">–</div>
+            <div className="display text-3xl md:text-7xl opacity-50 pb-2 md:pb-4">–</div>
             <div className="text-right">
-              <div className="display text-3xl md:text-5xl truncate">{match.opponent}</div>
-              <div className="font-bebas text-[6rem] md:text-[11rem] leading-[0.8] opacity-70">{match.oppScore}</div>
+              <div className="display text-xl md:text-5xl truncate">{match.opponent}</div>
+              <div className="font-bebas text-[4.25rem] md:text-[10rem] leading-[0.8] opacity-70">{match.oppScore}</div>
             </div>
           </div>
-          <p className="mt-6 display text-4xl">{win ? "Victoria" : "Derrota"} por {Math.abs(match.ourScore - match.oppScore)}</p>
+          <p className="mt-3 md:mt-6 display text-2xl md:text-4xl">{win ? "Victoria" : "Derrota"} por {Math.abs(match.ourScore - match.oppScore)}</p>
         </Container>
       </section>
 
-      <Container className="py-12 md:py-16 space-y-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <div className="card px-5 py-4">
-            <div className="eyebrow">Máximo anotador</div>
-            <div className="font-bebas text-4xl mt-2 leading-none">{top?.nickname ?? "—"}</div>
-            <div className="text-sm text-white/55">{box[0]?.points ?? 0} puntos</div>
+      <Container className="py-6 md:py-14 space-y-8 md:space-y-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
+          <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">
+            <div className="eyebrow text-[10px] md:text-xs">Máx. anotador</div>
+            <div className="font-bebas text-[1.75rem] md:text-4xl mt-1 md:mt-2 leading-none">{top?.nickname ?? "—"}</div>
+            <div className="text-xs md:text-sm text-white/55">{box[0]?.points ?? 0} puntos</div>
           </div>
-          <div className="card px-5 py-4">
-            <div className="eyebrow">Triples</div>
-            <div className="font-bebas text-4xl mt-2 leading-none">{teamT3}</div>
-            <div className="text-sm text-white/55">{teamT3 * 3} puntos</div>
+          <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">
+            <div className="eyebrow text-[10px] md:text-xs">Triples</div>
+            <div className="font-bebas text-[1.75rem] md:text-4xl mt-1 md:mt-2 leading-none">{teamT3}</div>
+            <div className="text-xs md:text-sm text-white/55">{teamT3 * 3} puntos</div>
           </div>
-          <div className="card px-5 py-4">
-            <div className="eyebrow">Tiros libres</div>
-            <div className="font-bebas text-4xl mt-2 leading-none">{teamFtA ? Math.round((teamFtM / teamFtA) * 100) : 0}%</div>
-            <div className="text-sm text-white/55">{teamFtM}/{teamFtA}</div>
+          <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">
+            <div className="eyebrow text-[10px] md:text-xs">Tiros libres</div>
+            <div className="font-bebas text-[1.75rem] md:text-4xl mt-1 md:mt-2 leading-none">{teamFtA ? Math.round((teamFtM / teamFtA) * 100) : 0}%</div>
+            <div className="text-xs md:text-sm text-white/55">{teamFtM}/{teamFtA}</div>
           </div>
-          <div className="card px-5 py-4">
-            <div className="eyebrow">Jugadores</div>
-            <div className="font-bebas text-4xl mt-2 leading-none">{box.filter(b => b.minutes !== "00:00").length}</div>
-            <div className="text-sm text-white/55">con minutos</div>
+          <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">
+            <div className="eyebrow text-[10px] md:text-xs">Jugadores</div>
+            <div className="font-bebas text-[1.75rem] md:text-4xl mt-1 md:mt-2 leading-none">{box.filter(b => b.minutes !== "00:00").length}</div>
+            <div className="text-xs md:text-sm text-white/55">con minutos</div>
           </div>
         </div>
 
         <section>
-          <SectionHeading eyebrow="Acta" title="Estadísticas del partido" />
+          <SectionHeading title="Estadísticas" />
           {box.length === 0 ? (
             <p className="text-white/60">No hay estadísticas individuales de este partido.</p>
           ) : (
@@ -113,7 +113,7 @@ export default async function MatchPage({ params }: { params: Promise<{ id: stri
                       <tr key={s.playerId} className="border-b border-line last:border-0 hover:bg-white/[0.03]">
                         <th scope="row" className="px-5 py-3 text-left font-normal">
                           <div className="flex items-center gap-3">
-                            <Link href={`/jugador/${s.playerId}`} className="font-bold hover:text-vice-pink whitespace-nowrap">
+                            <Link href={playerHref(s.playerId, season.id)} className="font-bold hover:text-vice-pink whitespace-nowrap">
                               {p?.nickname ?? `#${s.playerId}`} <span className="text-vice-pink/80">#{dorsal(p?.number)}</span>
                             </Link>
                             {p && <PositionTag position={p.position} className="hidden md:inline-flex" />}

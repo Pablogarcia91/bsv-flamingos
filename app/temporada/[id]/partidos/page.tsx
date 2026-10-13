@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getSeason } from "@/lib/data";
-import { FixtureCard, ResultRow } from "@/components/season/match-cards";
+import { MatchesBlock, ResultRow } from "@/components/season/match-cards";
 import { EmptyState, SectionHeading } from "@/components/site/ui";
 
 export default async function SeasonMatches({ params }: { params: Promise<{ id: string }> }) {
@@ -15,13 +15,11 @@ export default async function SeasonMatches({ params }: { params: Promise<{ id: 
   }
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-10 md:space-y-16">
       {season.fixtures.length > 0 && (
         <section>
           <SectionHeading eyebrow="Calendario" title="Por jugar" />
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-            {season.fixtures.map((f, i) => <FixtureCard key={f.date} fixture={f} index={i} />)}
-          </div>
+          <MatchesBlock fixtures={season.fixtures} />
         </section>
       )}
 

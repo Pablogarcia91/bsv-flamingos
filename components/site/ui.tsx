@@ -76,18 +76,18 @@ export function SectionHeading({
   className?: string;
 }) {
   return (
-    <div className={cn("flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-8 md:mb-10", className)}>
-      <div className="max-w-2xl">
+    <div className={cn("flex items-end justify-between gap-4 mb-5 md:mb-8", className)}>
+      <div className="max-w-2xl min-w-0">
         {eyebrow && (
-          <p className="eyebrow mb-3">
-            <span className="h-2 w-2 rounded-full bg-vice-pink" aria-hidden />
+          <p className="eyebrow mb-2 text-[11px] md:text-xs">
+            <span className="h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-vice-pink" aria-hidden />
             {eyebrow}
           </p>
         )}
-        <h2 className="display text-5xl md:text-7xl text-balance">{title}</h2>
-        {description && <p className="mt-3 text-lg text-white/70 text-pretty">{description}</p>}
+        <h2 className="display text-[2.25rem] sm:text-5xl md:text-6xl text-balance">{title}</h2>
+        {description && <p className="mt-2 text-[15px] md:text-lg text-white/65 text-pretty">{description}</p>}
       </div>
-      {action && <div className="shrink-0">{action}</div>}
+      {action && <div className="shrink-0 pb-1 text-sm md:text-base">{action}</div>}
     </div>
   );
 }
@@ -100,7 +100,7 @@ const positionStyles: Record<Position, string> = {
 
 export function PositionTag({ position, className }: { position: Position; className?: string }) {
   return (
-    <span className={cn("inline-flex items-center h-6 px-2.5 rounded-full border text-[11px] font-bold uppercase tracking-wider", positionStyles[position], className)}>
+    <span className={cn("inline-flex items-center h-5 md:h-6 px-2 md:px-2.5 rounded-full border text-[10px] md:text-[11px] font-bold uppercase tracking-wider", positionStyles[position], className)}>
       {position}
     </span>
   );
@@ -132,18 +132,18 @@ export function StatTile({
   className?: string;
 }) {
   return (
-    <div className={cn("rounded-3xl bg-panel border border-line px-5 py-4", className)}>
-      <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/55">{label}</div>
+    <div className={cn("rounded-2xl md:rounded-3xl bg-panel border border-line px-3.5 py-3 md:px-5 md:py-4 min-w-0", className)}>
+      <div className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] text-white/55 truncate">{label}</div>
       <div
         className={cn(
-          "font-bebas text-4xl md:text-5xl leading-none mt-2",
+          "font-bebas text-[1.75rem] md:text-5xl leading-none mt-1.5 md:mt-2",
           tone === "pink" && "text-vice-pink",
           tone === "blue" && "text-vice-blue"
         )}
       >
         {value}
       </div>
-      {hint && <div className="text-sm text-white/55 mt-1">{hint}</div>}
+      {hint && <div className="text-xs md:text-sm text-white/55 mt-1 truncate">{hint}</div>}
     </div>
   );
 }
@@ -163,5 +163,31 @@ export function EmptyState({ children, className }: { children: React.ReactNode;
     <div className={cn("rounded-3xl border border-dashed border-white/15 px-6 py-12 text-center text-white/55", className)}>
       {children}
     </div>
+  );
+}
+
+/** Cabecera de las páginas interiores: compacta en móvil. */
+export function PageHero({
+  eyebrow,
+  title,
+  description,
+  children,
+  className,
+}: {
+  eyebrow?: React.ReactNode;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  children?: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <section className={cn("hero-glow border-b border-line", className)}>
+      <Container className="py-8 md:py-16">
+        {eyebrow && <div className="flex flex-wrap items-center gap-2 mb-3 md:mb-4">{eyebrow}</div>}
+        <h1 className="display text-[3rem] sm:text-7xl md:text-8xl max-w-5xl text-balance">{title}</h1>
+        {description && <p className="mt-3 md:mt-5 text-[15px] md:text-xl text-white/70 max-w-2xl text-pretty">{description}</p>}
+        {children}
+      </Container>
+    </section>
   );
 }

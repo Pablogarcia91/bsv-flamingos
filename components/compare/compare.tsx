@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import type { Position } from "@/lib/types";
-import { cn, dorsal } from "@/lib/utils";
+import { cn, dorsal, playerHref } from "@/lib/utils";
 import { PositionTag } from "@/components/site/ui";
 
 export interface CompareStats {
@@ -47,7 +47,7 @@ function Picker({ value, onChange, players, scope, label, accent }: { value: num
         value={value}
         onChange={e => onChange(Number(e.target.value))}
         className={cn(
-          "appearance-none w-full h-14 pl-5 pr-12 rounded-full bg-panel border-2 font-bold text-lg cursor-pointer",
+          "appearance-none w-full h-12 md:h-14 pl-5 pr-12 rounded-full bg-panel border-2 font-bold md:text-lg cursor-pointer",
           accent === "pink" ? "border-vice-pink" : "border-vice-blue"
         )}
       >
@@ -87,7 +87,7 @@ export function Compare({ players, scopes }: { players: ComparePlayer[]; scopes:
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-5 md:space-y-8">
       <div role="radiogroup" aria-label="Periodo" className="inline-flex flex-wrap p-1 rounded-full bg-panel border border-line">
         {scopes.map(s => (
           <button
@@ -102,23 +102,23 @@ export function Compare({ players, scopes }: { players: ComparePlayer[]; scopes:
         ))}
       </div>
 
-      <div className="grid md:grid-cols-[1fr_auto_1fr] gap-4 items-center">
+      <div className="grid grid-cols-[1fr_auto_1fr] gap-2 md:gap-4 items-center">
         <Picker value={aId} onChange={id => setAndSync("a", id)} players={inScope} scope={scope} label="Jugador A" accent="pink" />
-        <span className="display text-4xl text-center text-white/40">vs</span>
+        <span className="display text-xl md:text-4xl text-center text-white/40">vs</span>
         <Picker value={bId} onChange={id => setAndSync("b", id)} players={inScope} scope={scope} label="Jugador B" accent="blue" />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-2.5 md:gap-4">
         {[{ p: pa, tone: "text-vice-pink" }, { p: pb, tone: "text-vice-blue text-right" }].map(({ p, tone }, i) => (
-          <Link key={i} href={`/jugador/${p.id}`} className={cn("card p-6 md:p-8 hover:border-white/25", i === 1 && "text-right")}>
-            <div className={cn("font-bebas text-5xl leading-none", tone)}>#{dorsal(p.numbers[scope])}</div>
-            <div className="display text-5xl md:text-7xl mt-2">{p.nickname}</div>
+          <Link key={i} href={playerHref(p.id, scope)} className={cn("card !rounded-2xl md:!rounded-4xl p-4 md:p-8 hover:border-white/25 min-w-0", i === 1 && "text-right")}>
+            <div className={cn("font-bebas text-3xl md:text-5xl leading-none", tone)}>#{dorsal(p.numbers[scope])}</div>
+            <div className="display text-3xl md:text-7xl mt-1 md:mt-2 truncate">{p.nickname}</div>
             <div className={cn("mt-3 flex", i === 1 && "justify-end")}><PositionTag position={p.position} /></div>
           </Link>
         ))}
       </div>
 
-      <div className="card p-4 md:p-8">
+      <div className="card !rounded-2xl md:!rounded-4xl px-3 py-1 md:p-8">
         {ROWS.map(r => {
           const va = sa?.[r.key];
           const vb = sb?.[r.key];
@@ -127,16 +127,16 @@ export function Compare({ players, scopes }: { players: ComparePlayer[]; scopes:
           const aWins = has && (r.lowerIsBetter ? va < vb : va > vb);
           const bWins = has && (r.lowerIsBetter ? vb < va : vb > va);
           return (
-            <div key={r.key} className="grid grid-cols-[1fr_6.5rem_1fr] md:grid-cols-[1fr_9rem_1fr] items-center gap-3 py-4 border-b border-line last:border-0">
+            <div key={r.key} className="grid grid-cols-[1fr_5.5rem_1fr] md:grid-cols-[1fr_9rem_1fr] items-center gap-2 md:gap-3 py-3 md:py-4 border-b border-line last:border-0">
               <div className="flex flex-col items-end gap-1.5">
-                <span className={cn("font-bebas text-3xl md:text-4xl leading-none", aWins ? "text-vice-pink" : "text-white/50")}>{va !== undefined ? r.fmt(va) : "—"}</span>
+                <span className={cn("font-bebas text-2xl md:text-4xl leading-none", aWins ? "text-vice-pink" : "text-white/50")}>{va !== undefined ? r.fmt(va) : "—"}</span>
                 <span className="w-full h-1.5 rounded-full bg-white/[0.06] flex justify-end overflow-hidden">
                   <span className={cn("h-full rounded-full", aWins ? "bg-vice-pink" : "bg-white/20")} style={{ width: `${has ? (Math.abs(va) / max) * 100 : 0}%` }} />
                 </span>
               </div>
-              <span className="text-center text-xs font-bold uppercase tracking-[0.14em] text-white/55">{r.label}</span>
+              <span className="text-center text-[10px] md:text-xs font-bold uppercase tracking-[0.12em] text-white/55">{r.label}</span>
               <div className="flex flex-col items-start gap-1.5">
-                <span className={cn("font-bebas text-3xl md:text-4xl leading-none", bWins ? "text-vice-blue" : "text-white/50")}>{vb !== undefined ? r.fmt(vb) : "—"}</span>
+                <span className={cn("font-bebas text-2xl md:text-4xl leading-none", bWins ? "text-vice-blue" : "text-white/50")}>{vb !== undefined ? r.fmt(vb) : "—"}</span>
                 <span className="w-full h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
                   <span className={cn("block h-full rounded-full", bWins ? "bg-vice-blue" : "bg-white/20")} style={{ width: `${has ? (Math.abs(vb) / max) * 100 : 0}%` }} />
                 </span>

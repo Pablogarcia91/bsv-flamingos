@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { getPlayerCareer, people, seasons } from "@/lib/data";
 import type { PlayerTotals } from "@/lib/types";
-import { Container } from "@/components/site/ui";
+import { Container, PageHero } from "@/components/site/ui";
 import { Compare, type ComparePlayer, type CompareStats } from "@/components/compare/compare";
 
 export const metadata: Metadata = { title: "Comparar jugadores" };
@@ -42,16 +42,12 @@ export default function CompararPage() {
 
   return (
     <>
-      <section className="hero-glow border-b border-line">
-        <Container className="py-14 md:py-20">
-          <p className="eyebrow mb-4">Comparador</p>
-          <h1 className="display text-7xl md:text-[10rem]">Cara a cara</h1>
-          <p className="mt-6 text-xl text-white/70 max-w-2xl">
-            Compara a dos jugadores de la misma temporada. Por defecto, la temporada actual.
-          </p>
-        </Container>
-      </section>
-      <Container className="py-12 md:py-16">
+      <PageHero
+        eyebrow={<span className="eyebrow">Comparador</span>}
+        title="Cara a cara"
+        description="Dos jugadores de la misma temporada."
+      />
+      <Container className="py-8 md:py-14">
         <Suspense fallback={<div className="h-96" />}>
           <Compare players={players} scopes={scopes} />
         </Suspense>
