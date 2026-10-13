@@ -18,7 +18,7 @@ export const season2026: Season = {
     { playerId: 7, number: 7 },    // Carlos
     { playerId: 24, number: 13 },  // Nico (antes 24)
     { playerId: 21, number: 3 },   // Martín (antes 21)
-    { playerId: 66, number: 6 },   // Juancho (antes 66)
+    { playerId: 66, number: 66 },  // Juancho
     { playerId: 10, number: 10 },  // Jose
     { playerId: 15, number: 15 },  // Sevi
     // Incorporaciones
