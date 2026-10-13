@@ -15,10 +15,20 @@ const config: Config = {
         'vice-blue': '#00CED1',
         'vice-purple': '#B026FF',
         'vice-yellow': '#FFD23F',
+        ink: '#0B0B0D',
+        panel: '#141417',
+        'panel-2': '#1C1C21',
+        line: 'rgba(255,255,255,0.09)',
       },
       fontFamily: {
-        'bebas': ['Bebas Neue', 'system-ui', 'sans-serif'],
-        'rajdhani': ['Rajdhani', 'sans-serif'],
+        bebas: ['var(--font-bebas)', 'Impact', 'system-ui', 'sans-serif'],
+        rajdhani: ['var(--font-rajdhani)', 'system-ui', 'sans-serif'],
+      },
+      borderRadius: {
+        '4xl': '2rem',
+      },
+      maxWidth: {
+        site: '80rem',
       },
     },
   },

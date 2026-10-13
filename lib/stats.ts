@@ -89,3 +89,77 @@ export function calculateTeamTotals(matches: Match[]): TeamGameStats[] {
     return totals;
   });
 }
+
+export interface TeamSummary {
+  played: number;
+  wins: number;
+  losses: number;
+  avgFor: number;
+  avgAgainst: number;
+  diff: number;
+  /** Racha actual, p. ej. "V2" o "D1". */
+  streak: string;
+  form: ("V" | "D")[];
+}
+
+export function summarizeTeam(matches: Match[]): TeamSummary {
+  const played = matches.length;
+  const wins = matches.filter(m => m.ourScore > m.oppScore).length;
+  const totalFor = matches.reduce((s, m) => s + m.ourScore, 0);
+  const totalAgainst = matches.reduce((s, m) => s + m.oppScore, 0);
+  const form = [...matches]
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .map(m => (m.ourScore > m.oppScore ? "V" : "D") as "V" | "D");
+
+  let streak = "";
+  if (form.length) {
+    const last = form[form.length - 1];
+    let n = 0;
+    for (let i = form.length - 1; i >= 0 && form[i] === last; i--) n++;
+    streak = `${last}${n}`;
+  }
+
+  return {
+    played,
+    wins,
+    losses: played - wins,
+    avgFor: played ? totalFor / played : 0,
+    avgAgainst: played ? totalAgainst / played : 0,
+    diff: played ? (totalFor - totalAgainst) / played : 0,
+    streak,
+    form: form.slice(-5),
+  };
+}
+
+export type LeaderKey = "ppg" | "t3" | "ftPct" | "plusMinus" | "mpg";
+
+export function leaderValue(p: PlayerTotals, key: LeaderKey): number {
+  switch (key) {
+    case "ppg": return p.games ? p.points / p.games : 0;
+    case "mpg": return p.games ? p.totalMinutes / p.games : 0;
+    case "t3": return p.t3Made;
+    case "ftPct": return p.ftAttempted >= 4 ? p.ftMade / p.ftAttempted : 0;
+    case "plusMinus": return p.plusMinus;
+  }
+}
+
+export function getLeader(totals: PlayerTotals[], key: LeaderKey) {
+  const ranked = totals
+    .filter(p => p.games > 0)
+    .sort((a, b) => leaderValue(b, key) - leaderValue(a, key));
+  return ranked[0];
+}
+
+export function formatLeader(p: PlayerTotals, key: LeaderKey): string {
+  const v = leaderValue(p, key);
+  switch (key) {
+    case "ppg":
+    case "mpg": return v.toFixed(1);
+    case "ftPct": return `${Math.round(v * 100)}%`;
+    case "plusMinus": return `${v > 0 ? "+" : ""}${v}`;
+    default: return String(v);
+  }
+}
+
+export const fmtDate = (d: string, opts: Intl.DateTimeFormatOptions = { day: "numeric", month: "short" }) =>
+  new Date(`${d}T12:00:00`).toLocaleDateString("es-ES", opts);

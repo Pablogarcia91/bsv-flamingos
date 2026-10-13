@@ -1,9 +1,67 @@
-export interface Player {
+export type Position = "Base" | "Alero" | "Pívot";
+
+/** Persona: datos que no cambian entre temporadas. */
+export interface Person {
   id: number;
   name: string;
   nickname: string;
-  number: number;
-  position: "Base" | "Alero" | "Pívot";
+  position: Position;
+}
+
+/** Jugador dentro de una temporada concreta (el dorsal puede cambiar). */
+export interface Player extends Person {
+  /** null = dorsal pendiente de asignar */
+  number: number | null;
+}
+
+export interface RosterEntry {
+  playerId: number;
+  /** null = dorsal pendiente de asignar */
+  number: number | null;
+}
+
+export interface Fixture {
+  date: string;
+  time?: string;
+  opponent: string;
+  home: boolean;
+  venue?: string;
+}
+
+export type SeasonStatus = "current" | "finished";
+
+export interface StandingRow {
+  team: string;
+  /** true = es nuestro equipo */
+  us?: boolean;
+  played: number;
+  wins: number;
+  losses: number;
+  pointsFor: number;
+  pointsAgainst: number;
+}
+
+export interface Standings {
+  division: string;
+  /** Fecha de la última actualización (YYYY-MM-DD) */
+  updated: string;
+  /** Ordenada por posición */
+  rows: StandingRow[];
+}
+
+export interface Season {
+  id: string;
+  label: string;
+  league: string;
+  status: SeasonStatus;
+  finalPosition?: number;
+  teamsInLeague?: number;
+  /** Datos de ejemplo (POC) — se sustituirán por actas reales. */
+  sample?: boolean;
+  roster: RosterEntry[];
+  matches: Match[];
+  fixtures: Fixture[];
+  standings?: Standings;
 }
 
 export interface PlayerStats {
