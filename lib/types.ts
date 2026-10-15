@@ -6,6 +6,8 @@ export interface Person {
   name: string;
   nickname: string;
   position: Position;
+  /** Foto oficial recortada (ruta en /public). Sin ella se muestra una silueta. */
+  photo?: string;
 }
 
 /** Jugador dentro de una temporada concreta (el dorsal puede cambiar). */

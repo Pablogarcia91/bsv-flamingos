@@ -9,7 +9,7 @@ import { MatchesBlock } from "@/components/season/match-cards";
 import { ContactCards } from "@/components/site/contact-cards";
 import { Leaders } from "@/components/season/leaders";
 import { RosterGrid } from "@/components/roster/roster-grid";
-import { Wordmark } from "@/components/site/brand";
+import { NeonWordmark } from "@/components/site/neon-wordmark";
 
 export default function Home() {
   const season = currentSeason;
@@ -45,10 +45,11 @@ export default function Home() {
                 </span>
                 {season.sample && <SampleTag />}
               </div>
-              <h1 className="display text-[3.25rem] sm:text-[6rem] lg:text-[8rem] drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
-                Somos los
+              <h1 className="display text-[3.25rem] sm:text-[6rem] lg:text-[8rem]">
+                {/* La sombra va solo en el texto para no apagar el halo del neón */}
+                <span className="drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)]">Somos los</span>
                 <span className="sr-only"> Flamingos</span>
-                <Wordmark height={150} className="block mt-1 w-[78%] sm:w-[min(100%,30rem)] h-auto -rotate-2" />
+                <NeonWordmark className="mt-1 w-[78%] sm:w-[min(100%,30rem)] -rotate-2" />
               </h1>
               <p className="mt-3 md:mt-5 text-[15px] md:text-xl text-white/85 max-w-md md:max-w-xl text-pretty drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
                 Liga Segunda - Alquería del Bàsquet. Cada partido, cada canasta y cada jugador, temporada a temporada.

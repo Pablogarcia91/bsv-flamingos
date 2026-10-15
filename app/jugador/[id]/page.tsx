@@ -5,6 +5,7 @@ import { currentSeason, getPerson, getPlayerCareer, people } from "@/lib/data";
 import { fmtDate } from "@/lib/stats";
 import { dorsal } from "@/lib/utils";
 import { Container, PositionTag } from "@/components/site/ui";
+import { PlayerPortrait } from "@/components/player/player-portrait";
 import { PlayerSeasons, type GameLogRow, type PlayerSeasonData } from "@/components/player/player-seasons";
 
 export function generateStaticParams() {
@@ -70,6 +71,10 @@ export default async function PlayerPage({ params }: { params: Promise<{ id: str
         >
           {number ?? ""}
         </span>
+        {/* Foto oficial o silueta, apoyada en el borde inferior */}
+        <div className="pointer-events-none absolute bottom-0 right-0 md:right-[8%] h-[88%] w-[46%] md:w-[30%] max-w-sm">
+          <PlayerPortrait person={person} sizes="(min-width: 768px) 30vw, 46vw" />
+        </div>
         <Container className="relative py-6 md:py-16">
           <Link
             href={latest ? `/temporada/${latest.season.id}/plantilla` : "/plantilla"}
