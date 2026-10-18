@@ -18,18 +18,18 @@ export const season2026: Season = {
     { playerId: 7, number: 7 },    // Carlos
     { playerId: 24, number: 13 },  // Nico (antes 24)
     { playerId: 21, number: 3 },   // Martín (antes 21)
-    { playerId: 66, number: 66 },  // Juancho
+    { playerId: 66, number: 6 },   // Juancho
     { playerId: 10, number: 10 },  // Jose
     { playerId: 15, number: 15 },  // Sevi
     // Incorporaciones
     { playerId: 100, number: 8 },    // Federico Ballerini
     { playerId: 101, number: 4 },    // Marcos Quiroga
     { playerId: 102, number: 17 },   // Leonel López
-    { playerId: 103, number: null }, // Carlos Mondéjar
-    { playerId: 104, number: null }, // Marcelo Rodríguez
+    { playerId: 103, number: 1 },    // Carlos Mondéjar
+    { playerId: 104, number: 28 },   // Marcelo Rodighiero
     { playerId: 105, number: 20 },   // Juan Ramos
     { playerId: 106, number: 22 },   // Pupa
-    { playerId: 107, number: null }, // Vlad Vilous
+    { playerId: 107, number: 23 },   // Vlad (Volodymyr Bilous)
     { playerId: 108, number: 12 },   // Josué Macías
   ],
   matches: [
@@ -55,29 +55,50 @@ export const season2026: Season = {
         { playerId: 106, minutes: "08:38", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: -4 },
       ],
     },
+    {
+      id: 102,
+      date: "2026-10-18",
+      opponent: "María Inmaculada Raconeta",
+      home: true,
+      ourScore: 37,
+      oppScore: 58,
+      stats: [
+        { playerId: 103, minutes: "13:32", points: 1, t2Made: 0, t3Made: 0, ftMade: 1, ftAttempted: 2, fouls: 1, plusMinus: -23 },
+        { playerId: 21, minutes: "14:31", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: -14 },
+        { playerId: 101, minutes: "06:51", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: 2 },
+        { playerId: 66, minutes: "24:33", points: 3, t2Made: 0, t3Made: 1, ftMade: 0, ftAttempted: 6, fouls: 4, plusMinus: -1 },
+        { playerId: 100, minutes: "16:04", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 0, plusMinus: 10 },
+        { playerId: 11, minutes: "24:54", points: 13, t2Made: 4, t3Made: 1, ftMade: 2, ftAttempted: 5, fouls: 3, plusMinus: -21 },
+        { playerId: 24, minutes: "18:03", points: 8, t2Made: 0, t3Made: 2, ftMade: 2, ftAttempted: 5, fouls: 3, plusMinus: -2 },
+        { playerId: 6, minutes: "21:57", points: 7, t2Made: 3, t3Made: 0, ftMade: 1, ftAttempted: 2, fouls: 3, plusMinus: -13 },
+        { playerId: 102, minutes: "25:50", points: 3, t2Made: 1, t3Made: 0, ftMade: 1, ftAttempted: 2, fouls: 2, plusMinus: -10 },
+        { playerId: 19, minutes: "11:18", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: -10 },
+        { playerId: 107, minutes: "10:44", points: 2, t2Made: 1, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 3, plusMinus: -20 },
+        { playerId: 104, minutes: "11:43", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 1, plusMinus: -3 },
+      ],
+    },
   ],
   standings: {
     division: "División Segunda",
-    updated: "2026-10-13",
+    updated: "2026-10-18",
     rows: [
-      { team: "Basket Montesion", played: 1, wins: 1, losses: 0, pointsFor: 62, pointsAgainst: 22 },
+      { team: "ATC Na Rovella 'A'", played: 2, wins: 2, losses: 0, pointsFor: 132, pointsAgainst: 100 },
+      { team: "Secuelas Pías", played: 2, wins: 2, losses: 0, pointsFor: 124, pointsAgainst: 98 },
+      { team: "San Jacobo Spurs", played: 2, wins: 2, losses: 0, pointsFor: 109, pointsAgainst: 97 },
+      { team: "Teatinas Valencia", played: 2, wins: 2, losses: 0, pointsFor: 97, pointsAgainst: 87 },
+      { team: "Basket Montesion", played: 2, wins: 1, losses: 1, pointsFor: 99, pointsAgainst: 64 },
+      { team: "Underdogs", played: 2, wins: 1, losses: 1, pointsFor: 121, pointsAgainst: 103 },
+      { team: "María Inmaculada Raconeta", played: 2, wins: 1, losses: 1, pointsFor: 109, pointsAgainst: 102 },
       { team: "Panthers", played: 1, wins: 1, losses: 0, pointsFor: 78, pointsAgainst: 50 },
-      { team: "Underdogs", played: 1, wins: 1, losses: 0, pointsFor: 65, pointsAgainst: 43 },
-      { team: "ATC Na Rovella 'A'", played: 1, wins: 1, losses: 0, pointsFor: 65, pointsAgainst: 51 },
-      { team: "Secuelas Pías", played: 1, wins: 1, losses: 0, pointsFor: 57, pointsAgainst: 43 },
-      { team: "San Jacobo Spurs", played: 1, wins: 1, losses: 0, pointsFor: 49, pointsAgainst: 41 },
-      { team: "Teatinas Valencia", played: 1, wins: 1, losses: 0, pointsFor: 55, pointsAgainst: 50 },
-      { team: "Flamingos", us: true, played: 1, wins: 0, losses: 1, pointsFor: 50, pointsAgainst: 55 },
-      { team: "Rockeros Che de Ale", played: 1, wins: 0, losses: 1, pointsFor: 41, pointsAgainst: 49 },
-      { team: "María Inmaculada Raconeta", played: 1, wins: 0, losses: 1, pointsFor: 51, pointsAgainst: 65 },
+      { team: "Rockeros Che de Ale", played: 2, wins: 0, losses: 2, pointsFor: 96, pointsAgainst: 116 },
+      { team: "Flamingos", us: true, played: 2, wins: 0, losses: 2, pointsFor: 87, pointsAgainst: 113 },
+      { team: "Stop Basket", played: 2, wins: 0, losses: 2, pointsFor: 92, pointsAgainst: 132 },
       { team: "Panathimankos", played: 1, wins: 0, losses: 1, pointsFor: 43, pointsAgainst: 57 },
-      { team: "Stop Basket", played: 1, wins: 0, losses: 1, pointsFor: 43, pointsAgainst: 65 },
       { team: "Ponycornios Team", played: 1, wins: 0, losses: 1, pointsFor: 50, pointsAgainst: 78 },
       { team: "Drinkers", played: 1, wins: 0, losses: 1, pointsFor: 22, pointsAgainst: 62 },
     ],
   },
   fixtures: [
-    { date: "2026-10-18", time: "11:00", opponent: "María Inmaculada Raconeta", home: true },
     { date: "2026-10-25", time: "12:45", opponent: "ATC Na Rovella 'A'", home: false },
     { date: "2026-10-31", time: "17:00", opponent: "Basket Montesion", home: false },
   ],

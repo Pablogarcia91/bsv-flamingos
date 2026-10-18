@@ -92,11 +92,11 @@ export default async function MatchPage({ params }: { params: Promise<{ id: stri
             <p className="text-white/60">No hay estadísticas individuales de este partido.</p>
           ) : (
             <div className="overflow-x-auto rounded-3xl border border-line bg-panel">
-              <table className="w-full text-[15px] min-w-[720px]">
+              <table className="w-max min-w-full text-[15px]">
                 <caption className="sr-only">Estadísticas individuales</caption>
                 <thead>
                   <tr className="border-b border-line text-xs font-bold uppercase tracking-[0.14em] text-white/55">
-                    <th scope="col" className="px-5 py-4 text-left">Jugador</th>
+                    <th scope="col" className="sticky-col pl-4 pr-3 md:px-5 py-4 text-left">Jugador</th>
                     <th scope="col" className="px-3 py-4 text-right">MIN</th>
                     <th scope="col" className="px-3 py-4 text-right">PTS</th>
                     <th scope="col" className="px-3 py-4 text-right">T2</th>
@@ -110,8 +110,8 @@ export default async function MatchPage({ params }: { params: Promise<{ id: stri
                   {box.map(s => {
                     const p = players.get(s.playerId);
                     return (
-                      <tr key={s.playerId} className="border-b border-line last:border-0 hover:bg-white/[0.03]">
-                        <th scope="row" className="px-5 py-3 text-left font-normal">
+                      <tr key={s.playerId} className="group border-b border-line last:border-0 hover:bg-white/[0.03]">
+                        <th scope="row" className="sticky-col group-hover:bg-[#19191c] pl-4 pr-3 md:px-5 py-3 text-left font-normal">
                           <div className="flex items-center gap-3">
                             <Link href={playerHref(s.playerId, season.id)} className="font-bold hover:text-vice-pink whitespace-nowrap">
                               {p?.nickname ?? `#${s.playerId}`} <span className="text-vice-pink/80">#{dorsal(p?.number)}</span>

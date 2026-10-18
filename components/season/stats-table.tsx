@@ -94,11 +94,11 @@ export function StatsTable({ rows, seasonId }: { rows: Row[]; seasonId?: string 
       </div>
 
       <div className="overflow-x-auto rounded-3xl border border-line bg-panel">
-        <table className="w-full text-[15px] border-collapse min-w-[760px]">
+        <table className="w-max min-w-full text-[15px] border-collapse">
           <caption className="sr-only">Estadísticas de jugadores</caption>
           <thead>
             <tr className="border-b border-line text-left">
-              <th scope="col" className="sticky left-0 z-10 bg-panel px-5 py-4 text-xs font-bold uppercase tracking-[0.14em] text-white/55">
+              <th scope="col" className="sticky-col pl-4 pr-3 md:px-5 py-4 text-left text-xs font-bold uppercase tracking-[0.14em] text-white/55">
                 Jugador
               </th>
               {cols.map(c => (
@@ -126,9 +126,9 @@ export function StatsTable({ rows, seasonId }: { rows: Row[]; seasonId?: string 
           <tbody>
             {sorted.map((p, i) => (
               <tr key={p.id} className="group border-b border-line last:border-0 hover:bg-white/[0.03]">
-                <th scope="row" className="sticky left-0 z-10 bg-panel group-hover:bg-[#19191c] px-5 py-3 text-left font-normal">
-                  <div className="flex items-center gap-3">
-                    <span className="w-5 text-sm text-white/35 tabular-nums">{i + 1}</span>
+                <th scope="row" className="sticky-col group-hover:bg-[#19191c] pl-4 pr-3 md:px-5 py-3 text-left font-normal">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <span className="w-4 md:w-5 text-sm text-white/35 tabular-nums">{i + 1}</span>
                     <Link href={playerHref(p.id, seasonId)} className="font-bold hover:text-vice-pink transition-colors whitespace-nowrap">
                       {p.nickname} <span className="text-vice-pink/80 font-semibold">#{dorsal(p.number)}</span>
                     </Link>

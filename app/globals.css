@@ -43,6 +43,12 @@
     @apply rounded-4xl bg-panel border border-line;
   }
 
+  /* Primera columna de una tabla con scroll horizontal: en móvil ocupa lo justo,
+     queda fija y se separa con una línea; en escritorio, ancho normal */
+  .sticky-col {
+    @apply sticky left-0 z-10 bg-panel whitespace-nowrap w-px md:w-auto shadow-[inset_-1px_0_0_theme(colors.line)] md:shadow-none;
+  }
+
   .chip-win {
     @apply inline-flex items-center justify-center h-6 min-w-6 px-2 rounded-full text-xs font-bold bg-vice-blue text-ink;
   }
