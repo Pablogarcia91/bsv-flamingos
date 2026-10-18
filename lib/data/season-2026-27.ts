@@ -62,6 +62,7 @@ export const season2026: Season = {
       home: true,
       ourScore: 37,
       oppScore: 58,
+      quarters: { us: [4, 14, 15, 4], them: [16, 12, 14, 16] },
       stats: [
         { playerId: 103, minutes: "13:32", points: 1, t2Made: 0, t3Made: 0, ftMade: 1, ftAttempted: 2, fouls: 1, plusMinus: -23 },
         { playerId: 21, minutes: "14:31", points: 0, t2Made: 0, t3Made: 0, ftMade: 0, ftAttempted: 0, fouls: 2, plusMinus: -14 },

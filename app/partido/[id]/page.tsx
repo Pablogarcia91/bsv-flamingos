@@ -5,6 +5,7 @@ import { getAllMatches, getMatch, getSeasonPlayers } from "@/lib/data";
 import { fmtDate } from "@/lib/stats";
 import { cn, dorsal, playerHref } from "@/lib/utils";
 import { Container, PositionTag, SampleTag, SectionHeading } from "@/components/site/ui";
+import { QuarterScores } from "@/components/season/quarter-scores";
 
 export function generateStaticParams() {
   return getAllMatches().map(m => ({ id: String(m.id) }));
@@ -63,28 +64,33 @@ export default async function MatchPage({ params }: { params: Promise<{ id: stri
       </section>
 
       <Container className="py-6 md:py-14 space-y-8 md:space-y-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
-          <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">
-            <div className="eyebrow text-[10px] md:text-xs">Máx. anotador</div>
-            <div className="font-bebas text-[1.75rem] md:text-4xl mt-1 md:mt-2 leading-none">{top?.nickname ?? "—"}</div>
-            <div className="text-xs md:text-sm text-white/55">{box[0]?.points ?? 0} puntos</div>
+        {/* Con el marcador por cuartos, sustituye a las cifras resumen */}
+        {match.quarters ? (
+          <QuarterScores match={match} quarters={match.quarters} />
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
+            <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">
+              <div className="eyebrow text-[10px] md:text-xs">Máx. anotador</div>
+              <div className="font-bebas text-[1.75rem] md:text-4xl mt-1 md:mt-2 leading-none">{top?.nickname ?? "—"}</div>
+              <div className="text-xs md:text-sm text-white/55">{box[0]?.points ?? 0} puntos</div>
+            </div>
+            <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">
+              <div className="eyebrow text-[10px] md:text-xs">Triples</div>
+              <div className="font-bebas text-[1.75rem] md:text-4xl mt-1 md:mt-2 leading-none">{teamT3}</div>
+              <div className="text-xs md:text-sm text-white/55">{teamT3 * 3} puntos</div>
+            </div>
+            <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">
+              <div className="eyebrow text-[10px] md:text-xs">Tiros libres</div>
+              <div className="font-bebas text-[1.75rem] md:text-4xl mt-1 md:mt-2 leading-none">{teamFtA ? Math.round((teamFtM / teamFtA) * 100) : 0}%</div>
+              <div className="text-xs md:text-sm text-white/55">{teamFtM}/{teamFtA}</div>
+            </div>
+            <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">
+              <div className="eyebrow text-[10px] md:text-xs">Jugadores</div>
+              <div className="font-bebas text-[1.75rem] md:text-4xl mt-1 md:mt-2 leading-none">{box.filter(b => b.minutes !== "00:00").length}</div>
+              <div className="text-xs md:text-sm text-white/55">con minutos</div>
+            </div>
           </div>
-          <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">
-            <div className="eyebrow text-[10px] md:text-xs">Triples</div>
-            <div className="font-bebas text-[1.75rem] md:text-4xl mt-1 md:mt-2 leading-none">{teamT3}</div>
-            <div className="text-xs md:text-sm text-white/55">{teamT3 * 3} puntos</div>
-          </div>
-          <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">
-            <div className="eyebrow text-[10px] md:text-xs">Tiros libres</div>
-            <div className="font-bebas text-[1.75rem] md:text-4xl mt-1 md:mt-2 leading-none">{teamFtA ? Math.round((teamFtM / teamFtA) * 100) : 0}%</div>
-            <div className="text-xs md:text-sm text-white/55">{teamFtM}/{teamFtA}</div>
-          </div>
-          <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">
-            <div className="eyebrow text-[10px] md:text-xs">Jugadores</div>
-            <div className="font-bebas text-[1.75rem] md:text-4xl mt-1 md:mt-2 leading-none">{box.filter(b => b.minutes !== "00:00").length}</div>
-            <div className="text-xs md:text-sm text-white/55">con minutos</div>
-          </div>
-        </div>
+        )}
 
         <section>
           <SectionHeading title="Estadísticas" />

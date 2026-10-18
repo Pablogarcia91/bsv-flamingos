@@ -92,6 +92,8 @@ export interface Match {
   home: boolean;
   ourScore: number;
   oppScore: number;
+  /** Puntos por cuarto (4 + prórrogas, si las hay). */
+  quarters?: { us: number[]; them: number[] };
   stats: PlayerStats[];
 }
 
