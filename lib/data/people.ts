@@ -28,7 +28,7 @@ export const people: Person[] = [
   { id: 103, name: "Carlos Mondéjar", nickname: "Mondéjar", position: "Alero" },
   { id: 104, name: "Carlos Marcelo Rodighiero", nickname: "Marcelo", position: "Alero" },
   { id: 105, name: "Juan Ramos", nickname: "Juan", position: "Base" },
-  { id: 106, name: "E. Coloma Martínez", nickname: "Pupa", position: "Base" },
+  { id: 106, name: "Edwin Andrés Coloma Martínez", nickname: "Pupa", position: "Base" },
   { id: 107, name: "Volodymyr Bilous", nickname: "Vlad", position: "Pívot" },
   { id: 108, name: "Josué Macías García", nickname: "Josué", position: "Alero" },
 ];
