@@ -18,7 +18,7 @@ export function Ticker() {
               {last.ourScore > last.oppScore ? "V" : "D"}
             </span>
             <span className="font-semibold text-white">
-              BSV {last.ourScore}–{last.oppScore} {last.opponent}
+              {currentSeason.teamName} {last.ourScore}–{last.oppScore} {last.opponent}
             </span>
           </Link>
         )}

@@ -76,7 +76,7 @@ export default function PatrocinioPage() {
           <h2 className="display text-[clamp(1.9rem,8.4vw,6.5rem)] whitespace-nowrap">Hablemos de tu marca</h2>
           <p className="mt-2 md:mt-3 text-[15px] md:text-lg text-ink/70">Escríbenos y te preparamos una propuesta.</p>
           <div className="mt-5 md:mt-8 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-            <PillLink href={mailto("Patrocinio BSV Flamingos")} className="self-start md:h-14 md:px-8 md:text-base">
+            <PillLink href={mailto(`Patrocinio ${site.name}`)} className="self-start md:h-14 md:px-8 md:text-base">
               <Mail className="h-5 w-5" aria-hidden /> Escríbenos
             </PillLink>
             <a href={`mailto:${site.email}`} className="text-sm md:text-base font-bold text-ink/70 hover:text-vice-pink break-all">

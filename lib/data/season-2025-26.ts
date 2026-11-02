@@ -534,6 +534,7 @@ const matches: Match[] = [
 export const season2025: Season = {
   id: "2025-26",
   label: "2025-26",
+  teamName: "BSV Flamingos",
   league: "Liga 2ª Alquería del Bàsquet",
   status: "finished",
   finalPosition: 7,

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Fixture, Match } from "@/lib/types";
 import { fmtDate } from "@/lib/stats";
+import { teamNameForMatch } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 export function ResultCard({ match, featured = false }: { match: Match; featured?: boolean }) {
@@ -21,7 +22,7 @@ export function ResultCard({ match, featured = false }: { match: Match; featured
         <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
       </div>
       <div className="grid grid-cols-[1fr_auto] items-center gap-y-1">
-        <span className="font-bold text-lg">BSV Flamingos</span>
+        <span className="font-bold text-lg">{teamNameForMatch(match.id)}</span>
         <span className={cn("font-bebas leading-none text-right", featured ? "text-6xl md:text-7xl" : "text-4xl", win ? "text-white" : "text-white/50")}>
           {match.ourScore}
         </span>

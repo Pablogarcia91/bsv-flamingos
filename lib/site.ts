@@ -1,6 +1,6 @@
 // Configuración general del sitio.
 export const site = {
-  name: "BSV Flamingos",
+  name: "Flamingos",
   shortName: "Flamingos",
   tagline: "Baloncesto amateur con estilo Miami Vice",
   city: "Valencia",

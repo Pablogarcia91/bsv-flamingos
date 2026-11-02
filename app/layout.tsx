@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/site/navbar";
 import { Ticker } from "@/components/site/ticker";
 import { Footer } from "@/components/site/footer";
+import { site } from "@/lib/site";
 import { currentSeason } from "@/lib/data";
 
 const bebas = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-bebas", display: "swap" });
@@ -11,10 +12,10 @@ const rajdhani = Rajdhani({ weight: ["400", "500", "600", "700"], subsets: ["lat
 
 export const metadata: Metadata = {
   title: {
-    default: "BSV Flamingos · Estadísticas",
-    template: "%s · BSV Flamingos",
+    default: `${site.name} · Estadísticas`,
+    template: `%s · ${site.name}`,
   },
-  description: `Estadísticas, partidos y plantilla del BSV Flamingos · ${currentSeason.league} · Temporada ${currentSeason.label}`,
+  description: `Estadísticas, partidos y plantilla de ${site.name} · ${currentSeason.league} · Temporada ${currentSeason.label}`,
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

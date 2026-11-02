@@ -36,6 +36,11 @@ export function getAllMatches(): (Match & { seasonId: string })[] {
   return seasons.flatMap(s => s.matches.map(m => ({ ...m, seasonId: s.id })));
 }
 
+/** Nombre del equipo en la temporada del partido. */
+export function teamNameForMatch(id: number): string {
+  return getMatch(id)?.season.teamName ?? currentSeason.teamName;
+}
+
 export function getMatch(id: number) {
   for (const season of seasons) {
     const match = season.matches.find(m => m.id === id);

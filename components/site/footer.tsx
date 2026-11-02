@@ -92,7 +92,7 @@ export function Footer() {
       </Container>
 
       <Container className="py-5 md:py-6 border-t border-line flex flex-col sm:flex-row gap-1 justify-between text-xs md:text-sm text-white/45">
-        <span>© {new Date().getFullYear()} BSV Flamingos</span>
+        <span>© {new Date().getFullYear()} {site.name}</span>
         <span>Estadísticas extraídas de las actas oficiales de partido</span>
       </Container>
     </footer>

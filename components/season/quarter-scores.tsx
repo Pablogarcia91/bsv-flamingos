@@ -4,10 +4,10 @@ import { cn } from "@/lib/utils";
 const label = (i: number) => (i < 4 ? `P${i + 1}` : `PR${i > 4 ? i - 3 : ""}`);
 
 /** Marcador por cuartos en una sola tarjeta, con el parcial de cada cuarto. */
-export function QuarterScores({ match, quarters }: { match: Match; quarters: NonNullable<Match["quarters"]> }) {
+export function QuarterScores({ match, quarters, teamName }: { match: Match; quarters: NonNullable<Match["quarters"]>; teamName: string }) {
   const { us, them } = quarters;
   const rows = [
-    { name: "BSV Flamingos", scores: us, other: them, total: match.ourScore, us: true },
+    { name: teamName, scores: us, other: them, total: match.ourScore, us: true },
     { name: match.opponent, scores: them, other: us, total: match.oppScore, us: false },
   ];
 

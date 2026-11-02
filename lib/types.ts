@@ -54,6 +54,8 @@ export interface Standings {
 export interface Season {
   id: string;
   label: string;
+  /** Nombre del equipo esa temporada (2025-26: «BSV Flamingos»; desde 2026-27: «Flamingos»). */
+  teamName: string;
   league: string;
   status: SeasonStatus;
   finalPosition?: number;

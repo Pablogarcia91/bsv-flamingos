@@ -50,7 +50,7 @@ export default async function MatchPage({ params }: { params: Promise<{ id: stri
           </p>
           <div className="mt-3 md:mt-4 grid grid-cols-[1fr_auto_1fr] items-end gap-3 md:gap-10">
             <div>
-              <div className="display text-xl md:text-5xl">BSV Flamingos</div>
+              <div className="display text-xl md:text-5xl">{season.teamName}</div>
               <div className="font-bebas text-[4.25rem] md:text-[10rem] leading-[0.8]">{match.ourScore}</div>
             </div>
             <div className="display text-3xl md:text-7xl opacity-50 pb-2 md:pb-4">–</div>
@@ -66,7 +66,7 @@ export default async function MatchPage({ params }: { params: Promise<{ id: stri
       <Container className="py-6 md:py-14 space-y-8 md:space-y-16">
         {/* Con el marcador por cuartos, sustituye a las cifras resumen */}
         {match.quarters ? (
-          <QuarterScores match={match} quarters={match.quarters} />
+          <QuarterScores match={match} quarters={match.quarters} teamName={season.teamName} />
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
             <div className="card !rounded-2xl md:!rounded-3xl px-3.5 py-3 md:px-5 md:py-4">

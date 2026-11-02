@@ -5,6 +5,7 @@ import { Season } from "../types";
 export const season2026: Season = {
   id: "2026-27",
   label: "2026-27",
+  teamName: "Flamingos",
   league: "Liga Quirónsalud Alquería Masculina",
   status: "current",
   teamsInLeague: 14,
