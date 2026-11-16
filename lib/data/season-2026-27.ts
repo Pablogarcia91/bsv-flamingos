@@ -192,5 +192,7 @@ export const season2026: Season = {
       { team: "Stop Basket", played: 4, wins: 0, losses: 4, pointsFor: 164, pointsAgainst: 234 },
     ],
   },
-  fixtures: [],
+  fixtures: [
+    { date: "2026-11-22", time: "11:00", opponent: "Rockeros Che de Ale", home: true },
+  ],
 };
