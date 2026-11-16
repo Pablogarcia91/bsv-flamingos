@@ -183,7 +183,7 @@ export const season2026: Season = {
       { team: "Drinkers", played: 6, wins: 4, losses: 2, pointsFor: 305, pointsAgainst: 317 },
       { team: "María Inmaculada Raconeta", played: 6, wins: 3, losses: 3, pointsFor: 350, pointsAgainst: 294 },
       { team: "Secuelas Pías", played: 5, wins: 4, losses: 1, pointsFor: 287, pointsAgainst: 263 },
-      { team: "Rockeros Che de Ale", played: 6, wins: 3, losses: 3, pointsFor: 346, pointsAgainst: 333 },
+      { team: "Rockeros Che Dealde", played: 6, wins: 3, losses: 3, pointsFor: 346, pointsAgainst: 333 },
       { team: "Panthers", played: 6, wins: 3, losses: 3, pointsFor: 368, pointsAgainst: 362 },
       { team: "Underdogs", played: 6, wins: 2, losses: 4, pointsFor: 332, pointsAgainst: 345 },
       { team: "Flamingos", us: true, played: 6, wins: 1, losses: 5, pointsFor: 258, pointsAgainst: 290 },
@@ -193,6 +193,6 @@ export const season2026: Season = {
     ],
   },
   fixtures: [
-    { date: "2026-11-22", time: "11:00", opponent: "Rockeros Che de Ale", home: true },
+    { date: "2026-11-22", time: "11:00", opponent: "Rockeros Che Dealde", home: true },
   ],
 };
